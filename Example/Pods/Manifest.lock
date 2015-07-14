@@ -1,0 +1,14 @@
+PODS:
+  - LKAlertController (0.1.0)
+
+DEPENDENCIES:
+  - LKAlertController (from `../`)
+
+EXTERNAL SOURCES:
+  LKAlertController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LKAlertController: edad7bed85dcf24c6e812c5ac978b5ebb7f3a6cd
+
+COCOAPODS: 0.37.2

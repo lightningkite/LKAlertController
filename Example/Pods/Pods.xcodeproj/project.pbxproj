@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		117288DB42C53774437E22A4 /* LKAlertController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 087D520DCC92C06E1BC1AAA6 /* LKAlertController.bundle */; };
+		75C454CE722BB186F2DA567F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8428BD70E2012C82E78D312D /* Foundation.framework */; };
+		7DC39AF1F0F9BE95088B5E0E /* Pods-LKAlertController_Tests-LKAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3EECFADFA74A8AD58760C3D /* Pods-LKAlertController_Tests-LKAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EEB6399691D62B4A5080D97 /* Pods-LKAlertController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF327EEFEAD73B7F788444A /* Pods-LKAlertController_Tests-dummy.m */; };
+		9078BF22003659C586585595 /* Pods-LKAlertController_Tests-LKAlertController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8491429FEBD3CED57AAAAA2 /* Pods-LKAlertController_Tests-LKAlertController-dummy.m */; };
+		BF115AFC1B556DCC00C3DDAE /* LKAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF115AFB1B556DCC00C3DDAE /* LKAlertController.swift */; };
+		BFB0E85F1C0A17E2E9D2A74C /* Pods-LKAlertController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AA51B9CA034AFA2DF74BCB /* Pods-LKAlertController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4B36C7CDCBA464D633A5755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8428BD70E2012C82E78D312D /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		994E8899F124050A3F7DEA4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8283705B056F76F441C65F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CA33C1FF2D5E9409EA7E2DB;
+			remoteInfo = "Pods-LKAlertController_Tests-LKAlertController";
+		};
+		C9B8221014807CE1C402A2F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8283705B056F76F441C65F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7B25F78E10EF62CDDD8C9C9;
+			remoteInfo = "Pods-LKAlertController_Tests-LKAlertController-LKAlertController";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		087D520DCC92C06E1BC1AAA6 /* LKAlertController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LKAlertController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EF327EEFEAD73B7F788444A /* Pods-LKAlertController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LKAlertController_Tests-dummy.m"; sourceTree = "<group>"; };
+		124EDD9B2BAE44D0884F2AFD /* Pods-LKAlertController_Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKAlertController_Tests-environment.h"; sourceTree = "<group>"; };
+		27AA51B9CA034AFA2DF74BCB /* Pods-LKAlertController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKAlertController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		478EFD8CE3F69A6AAD0CA4DB /* Pods-LKAlertController_Tests-LKAlertController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKAlertController_Tests-LKAlertController-prefix.pch"; sourceTree = "<group>"; };
+		52458E06831010EE190D0FC8 /* Pods-LKAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		66D383E632BEE92EF6B14533 /* LKAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LKAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AFEEDA4FFE8121ED0609D24 /* Pods_LKAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LKAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F758FBA930A7E128020737D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79F7FBFDF59E8ACC2759A66F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79FF4D0FC8BD92AACEC74195 /* Pods-LKAlertController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LKAlertController_Tests.modulemap"; sourceTree = "<group>"; };
+		7C56ACDB5209DA6745A045BF /* Pods-LKAlertController_Tests-LKAlertController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKAlertController_Tests-LKAlertController.xcconfig"; sourceTree = "<group>"; };
+		801BF673A00BD2D73C129E1C /* Pods-LKAlertController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LKAlertController_Tests-resources.sh"; sourceTree = "<group>"; };
+		8428BD70E2012C82E78D312D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3F274337D1478FA010ECFDE /* Pods-LKAlertController_Tests-LKAlertController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LKAlertController_Tests-LKAlertController.modulemap"; sourceTree = "<group>"; };
+		BF115AFB1B556DCC00C3DDAE /* LKAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKAlertController.swift; sourceTree = "<group>"; };
+		BF8C1A2A7EF67032587BF463 /* Pods-LKAlertController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LKAlertController_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		D2F685E034E1DE320EC7A4AA /* Pods-LKAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		DA6F50317B0BBD090B900BF6 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DAD0036B1A2B9D42B2D1BACE /* Pods-LKAlertController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LKAlertController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		E3EECFADFA74A8AD58760C3D /* Pods-LKAlertController_Tests-LKAlertController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKAlertController_Tests-LKAlertController-umbrella.h"; sourceTree = "<group>"; };
+		E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig"; sourceTree = "<group>"; };
+		F8491429FEBD3CED57AAAAA2 /* Pods-LKAlertController_Tests-LKAlertController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LKAlertController_Tests-LKAlertController-dummy.m"; sourceTree = "<group>"; };
+		FB3BDEA54C735026898756F5 /* Pods-LKAlertController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LKAlertController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1179B2C299F27D659C97D3C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B36C7CDCBA464D633A5755 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D026107D87608E72EF3DB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8D3B0F4CD1F6497F54A52E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75C454CE722BB186F2DA567F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1462ECE6626765145460F112 /* Pods-LKAlertController_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6F758FBA930A7E128020737D /* Info.plist */,
+				79FF4D0FC8BD92AACEC74195 /* Pods-LKAlertController_Tests.modulemap */,
+				FB3BDEA54C735026898756F5 /* Pods-LKAlertController_Tests-acknowledgements.markdown */,
+				DAD0036B1A2B9D42B2D1BACE /* Pods-LKAlertController_Tests-acknowledgements.plist */,
+				0EF327EEFEAD73B7F788444A /* Pods-LKAlertController_Tests-dummy.m */,
+				124EDD9B2BAE44D0884F2AFD /* Pods-LKAlertController_Tests-environment.h */,
+				BF8C1A2A7EF67032587BF463 /* Pods-LKAlertController_Tests-frameworks.sh */,
+				801BF673A00BD2D73C129E1C /* Pods-LKAlertController_Tests-resources.sh */,
+				27AA51B9CA034AFA2DF74BCB /* Pods-LKAlertController_Tests-umbrella.h */,
+				52458E06831010EE190D0FC8 /* Pods-LKAlertController_Tests.debug.xcconfig */,
+				D2F685E034E1DE320EC7A4AA /* Pods-LKAlertController_Tests.release.xcconfig */,
+			);
+			name = "Pods-LKAlertController_Tests";
+			path = "Target Support Files/Pods-LKAlertController_Tests";
+			sourceTree = "<group>";
+		};
+		2D96855DCFBC4A8A45CAFD78 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				79F7FBFDF59E8ACC2759A66F /* Info.plist */,
+				B3F274337D1478FA010ECFDE /* Pods-LKAlertController_Tests-LKAlertController.modulemap */,
+				7C56ACDB5209DA6745A045BF /* Pods-LKAlertController_Tests-LKAlertController.xcconfig */,
+				E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */,
+				F8491429FEBD3CED57AAAAA2 /* Pods-LKAlertController_Tests-LKAlertController-dummy.m */,
+				478EFD8CE3F69A6AAD0CA4DB /* Pods-LKAlertController_Tests-LKAlertController-prefix.pch */,
+				E3EECFADFA74A8AD58760C3D /* Pods-LKAlertController_Tests-LKAlertController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Pods-LKAlertController_Tests-LKAlertController";
+			sourceTree = "<group>";
+		};
+		55C00F4CA835ABA446D89755 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8428BD70E2012C82E78D312D /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5B7999414A5FCC27C86DCB94 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF115AFB1B556DCC00C3DDAE /* LKAlertController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6A102A2C07213BB2493E7987 = {
+			isa = PBXGroup;
+			children = (
+				DA6F50317B0BBD090B900BF6 /* Podfile */,
+				88F7D56C2B31D63F7AF3BD64 /* Development Pods */,
+				BAB74FDA4D4CBB0DFF77F852 /* Frameworks */,
+				AB9561B90F9AB366093D67DC /* Products */,
+				D682CF97C20DE089C6C3CEDE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		88136668E9D124721A803161 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5B7999414A5FCC27C86DCB94 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		88F7D56C2B31D63F7AF3BD64 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B2EE9ECE67CF923DD97C15B /* LKAlertController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8B2EE9ECE67CF923DD97C15B /* LKAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				88136668E9D124721A803161 /* Pod */,
+				2D96855DCFBC4A8A45CAFD78 /* Support Files */,
+			);
+			name = LKAlertController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		AB9561B90F9AB366093D67DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				087D520DCC92C06E1BC1AAA6 /* LKAlertController.bundle */,
+				66D383E632BEE92EF6B14533 /* LKAlertController.framework */,
+				6AFEEDA4FFE8121ED0609D24 /* Pods_LKAlertController_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAB74FDA4D4CBB0DFF77F852 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55C00F4CA835ABA446D89755 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D682CF97C20DE089C6C3CEDE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1462ECE6626765145460F112 /* Pods-LKAlertController_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		111CFFE17528A02256A2D000 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB0E85F1C0A17E2E9D2A74C /* Pods-LKAlertController_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81B8532AE7F49B8F5953FFE2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC39AF1F0F9BE95088B5E0E /* Pods-LKAlertController_Tests-LKAlertController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5CA33C1FF2D5E9409EA7E2DB /* Pods-LKAlertController_Tests-LKAlertController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9E844B73155FCB10E34FE57 /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests-LKAlertController" */;
+			buildPhases = (
+				2E6F3CA445B62431652E7F73 /* Sources */,
+				1179B2C299F27D659C97D3C6 /* Frameworks */,
+				5B346961626724EA09FB0149 /* Resources */,
+				81B8532AE7F49B8F5953FFE2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0A607FBEAE714C711534AA /* PBXTargetDependency */,
+			);
+			name = "Pods-LKAlertController_Tests-LKAlertController";
+			productName = "Pods-LKAlertController_Tests-LKAlertController";
+			productReference = 66D383E632BEE92EF6B14533 /* LKAlertController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		973639DE6C89179471D9EF58 /* Pods-LKAlertController_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44283B21F5F86C62F15E701E /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests" */;
+			buildPhases = (
+				30EA459387DA0B8E76F3F3A1 /* Sources */,
+				E8D3B0F4CD1F6497F54A52E5 /* Frameworks */,
+				111CFFE17528A02256A2D000 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				385190B98E15BF0B34938457 /* PBXTargetDependency */,
+			);
+			name = "Pods-LKAlertController_Tests";
+			productName = "Pods-LKAlertController_Tests";
+			productReference = 6AFEEDA4FFE8121ED0609D24 /* Pods_LKAlertController_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E7B25F78E10EF62CDDD8C9C9 /* Pods-LKAlertController_Tests-LKAlertController-LKAlertController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBD9584907DA020D03A2E88B /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests-LKAlertController-LKAlertController" */;
+			buildPhases = (
+				44F67F68DD1CDAF33182DB39 /* Sources */,
+				5D026107D87608E72EF3DB84 /* Frameworks */,
+				62658A314EBEFB7EC6A29A7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-LKAlertController_Tests-LKAlertController-LKAlertController";
+			productName = "Pods-LKAlertController_Tests-LKAlertController-LKAlertController";
+			productReference = 087D520DCC92C06E1BC1AAA6 /* LKAlertController.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8283705B056F76F441C65F60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = E28A3E191A9B675691ADAA6F /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6A102A2C07213BB2493E7987;
+			productRefGroup = AB9561B90F9AB366093D67DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				973639DE6C89179471D9EF58 /* Pods-LKAlertController_Tests */,
+				5CA33C1FF2D5E9409EA7E2DB /* Pods-LKAlertController_Tests-LKAlertController */,
+				E7B25F78E10EF62CDDD8C9C9 /* Pods-LKAlertController_Tests-LKAlertController-LKAlertController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B346961626724EA09FB0149 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				117288DB42C53774437E22A4 /* LKAlertController.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62658A314EBEFB7EC6A29A7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2E6F3CA445B62431652E7F73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9078BF22003659C586585595 /* Pods-LKAlertController_Tests-LKAlertController-dummy.m in Sources */,
+				BF115AFC1B556DCC00C3DDAE /* LKAlertController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30EA459387DA0B8E76F3F3A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EEB6399691D62B4A5080D97 /* Pods-LKAlertController_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44F67F68DD1CDAF33182DB39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		385190B98E15BF0B34938457 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-LKAlertController_Tests-LKAlertController";
+			target = 5CA33C1FF2D5E9409EA7E2DB /* Pods-LKAlertController_Tests-LKAlertController */;
+			targetProxy = 994E8899F124050A3F7DEA4B /* PBXContainerItemProxy */;
+		};
+		AA0A607FBEAE714C711534AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-LKAlertController_Tests-LKAlertController-LKAlertController";
+			target = E7B25F78E10EF62CDDD8C9C9 /* Pods-LKAlertController_Tests-LKAlertController-LKAlertController */;
+			targetProxy = C9B8221014807CE1C402A2F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B27E1E86DBEDE77A098BAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-LKAlertController_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = LKAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		63502F1A27961430FEF31E9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2F685E034E1DE320EC7A4AA /* Pods-LKAlertController_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LKAlertController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-LKAlertController_Tests/Pods-LKAlertController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_LKAlertController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		685266FA2C83CCD147085614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Pods-LKAlertController_Tests-LKAlertController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Pods-LKAlertController_Tests-LKAlertController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = LKAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6C02F7F510826DFC054F92A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Pods-LKAlertController_Tests-LKAlertController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-LKAlertController_Tests-LKAlertController/Pods-LKAlertController_Tests-LKAlertController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = LKAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F0C3DEEFE18A1BBD97E0733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6BE01351BBA38E5735FA414 /* Pods-LKAlertController_Tests-LKAlertController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-LKAlertController_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = LKAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		ADB0CD629AFE9A07FBFCA5F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52458E06831010EE190D0FC8 /* Pods-LKAlertController_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LKAlertController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-LKAlertController_Tests/Pods-LKAlertController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_LKAlertController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B345390EE4BE6C9E65BD116A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D7B05BCFB37F5658DA0BD033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44283B21F5F86C62F15E701E /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADB0CD629AFE9A07FBFCA5F5 /* Debug */,
+				63502F1A27961430FEF31E9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E28A3E191A9B675691ADAA6F /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B345390EE4BE6C9E65BD116A /* Debug */,
+				D7B05BCFB37F5658DA0BD033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBD9584907DA020D03A2E88B /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests-LKAlertController-LKAlertController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B27E1E86DBEDE77A098BAD1 /* Debug */,
+				9F0C3DEEFE18A1BBD97E0733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9E844B73155FCB10E34FE57 /* Build configuration list for PBXNativeTarget "Pods-LKAlertController_Tests-LKAlertController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C02F7F510826DFC054F92A1 /* Debug */,
+				685266FA2C83CCD147085614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8283705B056F76F441C65F60 /* Project object */;
+}

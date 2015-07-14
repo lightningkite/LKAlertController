@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0357762E559957A221E25BF7 /* Pods_LKAlertController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FF81FB40BEB13609724B1C /* Pods_LKAlertController_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BF115AFE1B55759D00C3DDAE /* LKAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF115AFD1B55759D00C3DDAE /* LKAlertControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,10 +17,10 @@
 		5A330E5F087D4CF63A946BAB /* LKAlertController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LKAlertController.podspec; path = ../LKAlertController.podspec; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = LKAlertController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		647D944FA91F9A5394FAC146 /* Pods-LKAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LKAlertController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LKAlertController_Tests/Pods-LKAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		909C90FA1CCC806233E5A905 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		AFD22BCE96848D83ACE1F30D /* Pods-LKAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LKAlertController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LKAlertController_Tests/Pods-LKAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF115AFD1B55759D00C3DDAE /* LKAlertControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LKAlertControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				BF115AFD1B55759D00C3DDAE /* LKAlertControllerTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -217,7 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				BF115AFE1B55759D00C3DDAE /* LKAlertControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
