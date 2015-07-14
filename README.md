@@ -7,7 +7,7 @@
 
 An easy to use UIAlertController builder for swift
 
-### Features
+## Features
 * Short and simple syntax for creating both Alerts and ActionSheets from UIAlertController
 * String together methods to build more complex alerts and action sheets
 
