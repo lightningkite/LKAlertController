@@ -10,18 +10,11 @@
 Pod::Spec.new do |s|
   s.name             = "LKAlertController"
   s.version          = "0.1.0"
-  s.summary          = "A short description of LKAlertController."
-  s.description      = <<-DESC
-                       An optional longer description of LKAlertController
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/LKAlertController"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.summary          = "An easy to use UIAlertController builder for swift"
+  s.homepage         = "https://github.com/lightningkite/LKAlertController"
   s.license          = 'MIT'
   s.author           = { "Erik Sargent" => "erik@lightningkite.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/LKAlertController.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/lightningkite/LKAlertController.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
@@ -32,7 +25,5 @@ Pod::Spec.new do |s|
     'LKAlertController' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
 end
