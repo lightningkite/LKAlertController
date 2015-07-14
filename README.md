@@ -1,6 +1,6 @@
 # LKAlertController
 
-[![CI Status](http://img.shields.io/travis/Erik Sargent/LKAlertController.svg?style=flat)](https://travis-ci.org/Erik Sargent/LKAlertController)
+[![CI Status](http://img.shields.io/travis/lightningkite/LKAlertController.svg?style=flat)](https://travis-ci.org/lightningkite/LKAlertController)
 [![Version](https://img.shields.io/cocoapods/v/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![License](https://img.shields.io/cocoapods/l/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
