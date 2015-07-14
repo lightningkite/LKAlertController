@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 
+An easy to use UIAlertController builder for swift
+
 ### Features
 * Short and simple syntax for creating both Alerts and ActionSheets from UIAlertController
 * String together methods to build more complex alerts and action sheets
