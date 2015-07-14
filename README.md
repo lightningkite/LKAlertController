@@ -5,11 +5,31 @@
 [![License](https://img.shields.io/cocoapods/l/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 
+### Features
+* Short and simple syntax for creating both Alerts and ActionSheets from UIAlertController
+* String together methods to build more complex alerts and action sheets
+
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+### Alert
+----
+``` Swift
+Alert(title: "Title", message: "Message")
+	.addAction("Cancel")
+	.addAction("Delete", style: .Destructive, handler: { _ in
+		//Delete the object
+	}).show()
+```
 
-## Requirements
+### Action Sheet
+----
+``` Swift
+ActionSheet(title: "Title", message: "Message")
+	.addAction("Cancel")
+	.addAction("Delete", style: .Destructive, handler: { _ in
+		//Delete the object
+	}).show()
+```
 
 ## Installation
 
@@ -20,9 +40,14 @@ it, simply add the following line to your Podfile:
 pod "LKAlertController"
 ```
 
+## Issues Questions and Contributing
+Have an issue, or want to request a feature? Create an issue in github.
+
+Want to contribute? Add yourself to the authors list, and create a pull request.
+
 ## Author
 
-Erik Sargent, erik@lightningkite.com
+Erik Sargent, [erik@lightningkite.com](mailto:erik@lightningkite.com)
 
 ## License
 
