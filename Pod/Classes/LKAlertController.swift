@@ -72,6 +72,10 @@ public class LKAlertController {
 
 
 public class Alert: LKAlertController {
+    public init() {
+        super.init(style: .Alert)
+    }
+    
     public init(title: String?) {
         super.init(style: .Alert)
         self.title = title
@@ -89,16 +93,20 @@ public class Alert: LKAlertController {
     }
     
     public func addAction(title: String) -> Alert {
-        return addAction(title, style: .Default, handler: nil)
+        return addAction(title, style: .Cancel, handler: nil)
     }
     
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
-        return super.addAction(title, style: .Default, handler: handler) as! Alert
+        return super.addAction(title, style: style, handler: handler) as! Alert
     }
 }
 
 
 public class ActionSheet: LKAlertController {
+    public init() {
+        super.init(style: .ActionSheet)
+    }
+    
     public init(title: String?) {
         super.init(style: .ActionSheet)
         self.title = title
@@ -116,10 +124,10 @@ public class ActionSheet: LKAlertController {
     }
     
     public func addAction(title: String) -> ActionSheet {
-        return addAction(title, style: .Default, handler: nil)
+        return addAction(title, style: .Cancel, handler: nil)
     }
     
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> ActionSheet {
-        return super.addAction(title, style: .Default, handler: handler) as! ActionSheet
+        return super.addAction(title, style: style, handler: handler) as! ActionSheet
     }
 }

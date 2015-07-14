@@ -71,6 +71,12 @@ class LKAlertControllerTests: XCTestCase {
 
 
 class AlertTests: XCTestCase {
+    func testInit() {
+        let controller = Alert().getAlertController()
+        XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertNil(controller.message, "The message was not nil")
+    }
+    
     func testInitWithTitle() {
         let controller = Alert(title: "the title").getAlertController()
         XCTAssertNotNil(controller.title, "The title was nil")
@@ -140,6 +146,12 @@ class AlertTests: XCTestCase {
 
 
 class ActionSheetTests: XCTestCase {
+    func testInit() {
+        let controller = ActionSheet().getAlertController()
+        XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertNil(controller.message, "The message was not nil")
+    }
+    
     func testInitWithTitle() {
         let controller = ActionSheet(title: "the title").getAlertController()
         XCTAssertNotNil(controller.title, "The title was nil")
