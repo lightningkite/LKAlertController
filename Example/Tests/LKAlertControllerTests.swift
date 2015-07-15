@@ -181,6 +181,28 @@ class AlertTests: XCTestCase {
         XCTAssertNil(controller.message, "The message was not nil")
         XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
+    
+    func testShowOkay() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
+            
+            if let button = actions.first as? UIAlertAction {
+                XCTAssertEqual(button.title, "Okay", "Incorrect title of button")
+                XCTAssertEqual(button.style, UIAlertActionStyle.Cancel, "Incorrect style of button")
+            }
+            else {
+                XCTFail("No button")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        Alert(title: "Title", message: "Message").showOkay()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
 }
 
 
