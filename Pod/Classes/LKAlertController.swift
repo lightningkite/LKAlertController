@@ -93,6 +93,7 @@ public class LKAlertController {
         //Override for testing
         if let alertTester = LKAlertController.alertTester {
             alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions)
+            LKAlertController.alertTester = nil
         }
         //Present the alert
         else if let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
@@ -183,6 +184,14 @@ public class Alert: LKAlertController {
     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
         return super.addAction(title, style: style, handler: handler) as! Alert
+    }
+    
+    /**
+    Shortcut method for adding an Okay button and showing the alert
+    */
+    public func showOkay() {
+        super.addAction("Okay", style: .Cancel, handler: nil)
+        show()
     }
 }
 
