@@ -67,6 +67,36 @@ class LKAlertControllerTests: XCTestCase {
             XCTFail("Could not load the last action")
         }
     }
+    
+    func testOverrideShowForTesting() {
+        let expectation = expectationWithDescription("Show override")
+        
+        let theStyle = UIAlertControllerStyle.Alert
+        let theTitle = "Alert Title"
+        let theMessage = "Alert Message"
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(style, theStyle, "The style was incorrect")
+            if let title = title {
+                XCTAssertEqual(title, theTitle, "The title was incorrect")
+            }
+            else {
+                XCTFail("The title was nil")
+            }
+            if let message = message {
+                XCTAssertEqual(message, theMessage, "The message was incorrect")
+            }
+            else {
+                XCTFail("The message was nil")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        Alert(title: theTitle, message: theMessage).show()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
 }
 
 
@@ -75,6 +105,7 @@ class AlertTests: XCTestCase {
         let controller = Alert().getAlertController()
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithTitle() {
@@ -84,12 +115,14 @@ class AlertTests: XCTestCase {
             XCTAssertEqual(title, "the title", "The title was incorrect")
         }
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithNilTitle() {
         let controller = Alert(title: nil).getAlertController()
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithMessage() {
@@ -99,12 +132,14 @@ class AlertTests: XCTestCase {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
         XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithNilMessage() {
         let controller = Alert(message: nil).getAlertController()
         XCTAssertNil(controller.message, "The message was not nil")
         XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithTitleAndMessage() {
@@ -117,6 +152,7 @@ class AlertTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithNilTitleAndMessage() {
@@ -126,6 +162,7 @@ class AlertTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithTitleAndNilMessage() {
@@ -135,12 +172,14 @@ class AlertTests: XCTestCase {
             XCTAssertEqual(controller.title!, "the title", "The title was incorrect")
         }
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
     func testInitWithNilTitleAndNilMessage() {
         let controller = Alert(title: nil, message: nil).getAlertController()
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
 }
 
@@ -150,6 +189,7 @@ class ActionSheetTests: XCTestCase {
         let controller = ActionSheet().getAlertController()
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithTitle() {
@@ -159,6 +199,7 @@ class ActionSheetTests: XCTestCase {
             XCTAssertEqual(title, "the title", "The title was incorrect")
         }
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithNilTitle() {
@@ -174,12 +215,14 @@ class ActionSheetTests: XCTestCase {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
         XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithNilMessage() {
         let controller = ActionSheet(message: nil).getAlertController()
         XCTAssertNil(controller.message, "The message was not nil")
         XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithTitleAndMessage() {
@@ -192,6 +235,7 @@ class ActionSheetTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithNilTitleAndMessage() {
@@ -201,6 +245,7 @@ class ActionSheetTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithTitleAndNilMessage() {
@@ -210,11 +255,13 @@ class ActionSheetTests: XCTestCase {
             XCTAssertEqual(controller.title!, "the title", "The title was incorrect")
         }
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
     func testInitWithNilTitleAndNilMessage() {
         let controller = ActionSheet(title: nil, message: nil).getAlertController()
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
+        XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
 }
