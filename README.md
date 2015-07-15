@@ -81,6 +81,12 @@ ActionSheet()
 	}
 ```
 
+There is also a shortcut for quickly showing an alert with an `Okay` button. After initializing an alert, call `showOkay`
+
+``` Swift
+Alert(title: "Stuff has happened").showOkay()
+```
+
 ##Testing
 
 You can add an override for the `show` method to make it easy to add unit tests for your alerts.
