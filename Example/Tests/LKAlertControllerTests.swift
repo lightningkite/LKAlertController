@@ -97,6 +97,50 @@ class LKAlertControllerTests: XCTestCase {
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
+    
+    func testShow() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+            
+            expectation.fulfill()
+        }
+        
+        LKAlertController(style: .Alert).show()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
+    func testShowAnimated() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+            
+            expectation.fulfill()
+        }
+        
+        LKAlertController(style: .Alert).show(animated: true)
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
+    
+    func testShowAnimatedCompletion() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+            
+            expectation.fulfill()
+        }
+        
+        LKAlertController(style: .Alert).show(animated: true, completion: nil)
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
 }
 
 
@@ -180,6 +224,28 @@ class AlertTests: XCTestCase {
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
         XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
+    }
+    
+    func testShow() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+            
+            if let button = actions.first as? UIAlertAction {
+                XCTAssertEqual(button.title, "Cancel", "Incorrect title of button")
+            }
+            else {
+                XCTFail("No button")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        Alert(title: "Title", message: "Message").addAction("Cancel").show()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
     }
     
     func testShowOkay() {
@@ -285,5 +351,27 @@ class ActionSheetTests: XCTestCase {
         XCTAssertNil(controller.title, "The title was not nil")
         XCTAssertNil(controller.message, "The message was not nil")
         XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
+    }
+    
+    func testShow() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+            XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.ActionSheet, "Incorrect Style of the alert")
+            
+            if let button = actions.first as? UIAlertAction {
+                XCTAssertEqual(button.title, "Cancel", "Incorrect title of button")
+            }
+            else {
+                XCTFail("No button")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        ActionSheet(title: "Title", message: "Message").addAction("Cancel").show()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
     }
 }
