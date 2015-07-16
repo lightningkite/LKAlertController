@@ -57,9 +57,11 @@ public class LKAlertController {
     :param: handler  Closure to call when the button is pressed
     */
     public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)? = nil) -> LKAlertController {
-        var action = UIAlertAction(title: title, style: style, handler: { _ in })
+        var action: UIAlertAction
         if let handler = handler {
             action = UIAlertAction(title: title, style: style, handler: handler)
+        } else {
+            action = UIAlertAction(title: title, style: style, handler: { _ in })
         }
         
         alertController.addAction(action)
