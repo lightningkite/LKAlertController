@@ -154,6 +154,7 @@ public class Alert: LKAlertController {
     public init(message: String?) {
         super.init(style: .Alert)
         self.message = message
+        self.title = message == nil ? nil : ""
     }
     
     /**
@@ -227,6 +228,7 @@ public class ActionSheet: LKAlertController {
     public init(message: String?) {
         super.init(style: .ActionSheet)
         self.message = message
+        self.title = message == nil ? nil : ""
     }
     
     /**

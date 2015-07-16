@@ -175,7 +175,10 @@ class AlertTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
-        XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertNotNil(controller.title, "The title was nil")
+        if controller.title != nil {
+            XCTAssertEqual(controller.title!, "", "The title was not blank")
+        }
         XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.Alert, "The controller type was incorrect")
     }
     
@@ -302,7 +305,10 @@ class ActionSheetTests: XCTestCase {
         if let message = controller.message {
             XCTAssertEqual(message, "the message", "The message was incorrect")
         }
-        XCTAssertNil(controller.title, "The title was not nil")
+        XCTAssertNotNil(controller.title, "The title was nil")
+        if controller.title != nil {
+            XCTAssertEqual(controller.title!, "", "The title was not blank")
+        }
         XCTAssertEqual(controller.preferredStyle, UIAlertControllerStyle.ActionSheet, "The controller type was incorrect")
     }
     
