@@ -12,5 +12,5 @@ osx_image: beta-xcode6.3
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- xctool -workspace Example/LKAlertController.xcworkspace -scheme LKAlertController-Example -sdk iphonesimulator build
+    - xctool -workspace Example/LKAlertController.xcworkspace -scheme LKAlertController-Example -sdk iphonesimulator build build-tests run-tests analyze
 - pod lib lint --quick
