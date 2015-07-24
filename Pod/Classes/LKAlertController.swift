@@ -179,6 +179,18 @@ public class Alert: LKAlertController {
         self.message = message
     }
     
+    public func addTextField() {
+        super.addTextField(nil, secureText: nil)
+    }
+    
+    public func addTextField(placeholder: String) {
+        super.addTextField(placeholder, secureText: nil)
+    }
+    
+    public func addTextField(secureText: Bool) {
+        super.addTextField(nil, secureText: secureText)
+    }
+    
     /**
     Add a new button to the alert. It will not have an action and will have the Cancel style
     
