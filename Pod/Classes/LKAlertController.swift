@@ -49,6 +49,17 @@ public class LKAlertController {
         alertController = UIAlertController(title: nil, message: nil, preferredStyle: style)
     }
     
+    public func addTextField(placeholder: String?, secureText: Bool?) {
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            if let placeholder = placeholder {
+                textField.placeholder = placeholder
+            }
+            if let secureText = secureText {
+                textField.secureTextEntry = true
+            }
+        }
+    }
+    
     /**
     Add a new button to the controller.
     
