@@ -58,7 +58,7 @@ public class LKAlertController {
     :param: placeholder  Placeholder text for text field
     :param: secureText  Secure text entry for text field
     */
-    public func addTextField(placeholder: String?, secureText: Bool?) -> LKAlertController {
+    internal func addTextField(placeholder: String?, secureText: Bool?) -> LKAlertController {
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             if let placeholder = placeholder {
                 textField.placeholder = placeholder
