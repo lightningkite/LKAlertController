@@ -39,6 +39,9 @@ public class LKAlertController {
             alertController.message = newValue
         }
     }
+
+    /** Used internally to determine if the user has set the popover controller source for presenting */
+    internal var configuredPopoverController = false
     
     /**
     Initialize a new LKAlertController
@@ -117,12 +120,25 @@ public class LKAlertController {
         //Present the alert
         else if let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
             //Find the presented view controller
-            var topController = viewController
-            while (topController.presentedViewController != nil) {
-                topController = topController.presentedViewController!
+            var presentedController = viewController
+            while (presentedController.presentedViewController != nil) {
+                presentedController = presentedController.presentedViewController!
             }
             
-            topController.presentViewController(alertController, animated: animated, completion: completion)
+            //If the user has not configured the popover controller source on ipad then set it to the presenting view
+            if self is ActionSheet && !configuredPopoverController,
+                let popoverController = alertController.popoverPresentationController {
+                    
+                    var topController = presentedController
+                    while (topController.childViewControllers.last != nil) {
+                        topController = topController.childViewControllers.last as! UIViewController
+                    }
+                    
+                    popoverController.sourceView = topController.view
+                    popoverController.sourceRect = topController.view.bounds
+            }
+            
+            presentedController.presentViewController(alertController, animated: animated, completion: completion)
         }
     }
     
@@ -171,6 +187,7 @@ public class Alert: LKAlertController {
     public init(message: String?) {
         super.init(style: .Alert)
         self.message = message
+        self.title = message == nil ? nil : ""
     }
     
     /**
@@ -269,6 +286,7 @@ public class ActionSheet: LKAlertController {
     public init(message: String?) {
         super.init(style: .ActionSheet)
         self.message = message
+        self.title = message == nil ? nil : ""
     }
     
     /**
@@ -301,5 +319,36 @@ public class ActionSheet: LKAlertController {
     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> ActionSheet {
         return super.addAction(title, style: style, handler: handler) as! ActionSheet
+    }
+    
+    /**
+    Set the presenting bar button item. Used for presenting the action sheet on iPad.
+    If this isn't set, it will default to the presenting view on iPad.
+    
+    :param: item  UIBarButtonItem that the action sheet will present from
+    */
+    public func setBarButtonItem(item: UIBarButtonItem) -> ActionSheet {
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.barButtonItem = item
+        }
+        super.configuredPopoverController = true
+        
+        return self
+    }
+    
+    /**
+    Set the presenting source view. Used for presenting the action sheet on iPad.
+    If this isn't set, it will default to the presenting view on iPad.
+    
+    :param: source  The view the action sheet will present from
+    */
+    public func setPresentingSource(source: UIView) -> ActionSheet {
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = source
+            popoverController.sourceRect = source.bounds
+        }
+        super.configuredPopoverController = true
+        
+        return self
     }
 }
