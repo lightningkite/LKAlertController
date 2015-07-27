@@ -58,7 +58,7 @@ public class LKAlertController {
     :param: placeholder  Placeholder text for text field
     :param: secureText  Secure text entry for text field
     */
-    internal func addTextField(placeholder: String?, secureText: Bool?) -> LKAlertController {
+    internal func addTextField(placeholder: String?, secureText: Bool?) -> Alert {
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             if let placeholder = placeholder {
                 textField.placeholder = placeholder
@@ -68,7 +68,7 @@ public class LKAlertController {
             }
         }
         
-        return self
+        return self as! Alert
     }
     
     /**
@@ -207,7 +207,7 @@ public class Alert: LKAlertController {
     /**
     Add a text field to the controller. It will not have any placeholder text nor secure text entry
     */
-    public func addTextField() -> LKAlertController {
+    public func addTextField() -> Alert {
         super.addTextField(nil, secureText: nil)
         
         return self
@@ -218,7 +218,7 @@ public class Alert: LKAlertController {
     
     :param: placeholder  Placeholder text for text field
     */
-    public func addTextField(placeholder: String) -> LKAlertController {
+    public func addTextField(placeholder: String) -> Alert {
         super.addTextField(placeholder, secureText: nil)
         
         return self
@@ -229,7 +229,7 @@ public class Alert: LKAlertController {
     
     :param: secureText  Secure text entry for text field
     */
-    public func addTextField(secureText: Bool) -> LKAlertController {
+    public func addTextField(secureText: Bool) -> Alert {
         super.addTextField(nil, secureText: secureText)
         
         return self
