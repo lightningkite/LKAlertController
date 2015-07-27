@@ -87,6 +87,28 @@ There is also a shortcut for quickly showing an alert with an `Okay` button. Aft
 Alert(title: "Stuff has happened").showOkay()
 ```
 
+Text fields can be added to instances of the Alert class. Text fields are blank and do not have secure text entry by default, but placeholder text and/or secure text entry can be optionally configured through initialization.
+
+``` Swift
+Alert.addTextfield()
+Alert.addTextfield(placeholder: "Enter Username")
+Alert.addTextfield(secureText: true)
+Alert.addTextfield(placeholder: "Enter Password", secureText: true)
+```
+
+Adding text fields can be strung together with other Alert methods.
+
+``` Swift
+Alert(title: "Title", message: "Message")
+    .addTextField(placeholder: "Enter Username")
+    .addTextField("Enter Password", secureText: true)
+    .addAction("Cancel")
+    .addAction("Submit", style: .Default) { action in
+        logInMethod()
+    }
+    .show()
+```
+
 ##Testing
 
 You can add an override for the `show` method to make it easy to add unit tests for your alerts.
