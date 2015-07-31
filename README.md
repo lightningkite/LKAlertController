@@ -14,7 +14,6 @@ An easy to use UIAlertController builder for swift
 ## Basic Usage
 
 ### Alert
-----
 ``` Swift
 Alert(title: "Title", message: "Message")
 	.addAction("Cancel")
@@ -24,7 +23,6 @@ Alert(title: "Title", message: "Message")
 ```
 
 ### Action Sheet
-----
 ``` Swift
 ActionSheet(title: "Title", message: "Message")
 	.addAction("Cancel")
@@ -81,32 +79,48 @@ ActionSheet()
 	}
 ```
 
-There is also a shortcut for quickly showing an alert with an `Okay` button. After initializing an alert, call `showOkay`
+### Alert Specific Configuration
+
+There is a shortcut on alerts to show with an okay button: `showOkay`
 
 ``` Swift
 Alert(title: "Stuff has happened").showOkay()
 ```
 
-Text fields can be added to instances of the Alert class. Text fields are blank and do not have secure text entry by default, but placeholder text and/or secure text entry can be optionally configured through initialization.
+Text fields can also be added to alerts. To add a text field, initialize a text field first, and configure it, then pass it in with the alert. Note that text fields must be initialized as `var` rather than `let`
 
 ``` Swift
-Alert.addTextfield()
-Alert.addTextfield(placeholder: "Enter Username")
-Alert.addTextfield(secureText: true)
-Alert.addTextfield(placeholder: "Enter Password", secureText: true)
+var textField = UITextField()
+textField.placeholder = "Password"
+textField.secureTextEntry = true
+
+Alert().addTextfield(&textField).showOkay()
 ```
 
-Adding text fields can be strung together with other Alert methods.
+### ActionSheet Specific Configuration
+
+If presenting on iPad, ActionSheets need to be configured with where it is presenting from. This is done by using the `setBarButtonItem` or `setPresentingSource` function. Note that this has no effect on iPhone, so it is safe, and recommended, to call this method if your app supports both iPad and iPhone.
 
 ``` Swift
-Alert(title: "Title", message: "Message")
-    .addTextField(placeholder: "Enter Username")
-    .addTextField("Enter Password", secureText: true)
-    .addAction("Cancel")
-    .addAction("Submit", style: .Default) { action in
-        logInMethod()
-    }
-    .show()
+ActionSheet()
+	.addAction("Delete", style: .Destructive) {
+		delete()
+	}
+	.addAction("Cancel")
+	.setBarButtonItem(navigationController.rightBarButtonItem)
+	.show(animated: true) {
+		controllerWasPresented()
+	}
+	
+ActionSheet()
+	.addAction("Delete", style: .Destructive) {
+		delete()
+	}
+	.addAction("Cancel")
+	.setPresentingSource(buttonThatWasPressed)
+	.show(animated: true) {
+		controllerWasPresented()
+	}
 ```
 
 ##Testing
@@ -117,7 +131,7 @@ You can add an override for the `show` method to make it easy to add unit tests 
 func testDeleteOpensConfirmationAlert() {
 	let expectation = expectationWithDescription("Show override")
 
-	LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in 
+	LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in 
 		
 		XCTAssertEquals(title, "Are you sure you want to delete?", "Alert title was incorrect")
 		
@@ -130,6 +144,8 @@ func testDeleteOpensConfirmationAlert() {
 	waitForExpectations(0.5, handler: nil)
 }
 ```
+
+This will allow you to test the controller was presented as well as the title, message, actions and fields of the alert or action sheet.
 
 ## Installation
 
