@@ -75,7 +75,7 @@ class LKAlertControllerTests: XCTestCase {
         let theTitle = "Alert Title"
         let theMessage = "Alert Message"
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(style, theStyle, "The style was incorrect")
             if let title = title {
                 XCTAssertEqual(title, theTitle, "The title was incorrect")
@@ -101,7 +101,7 @@ class LKAlertControllerTests: XCTestCase {
     func testShow() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
             XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
             
@@ -115,7 +115,7 @@ class LKAlertControllerTests: XCTestCase {
     func testShowAnimated() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
             XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
             
@@ -130,7 +130,7 @@ class LKAlertControllerTests: XCTestCase {
     func testShowAnimatedCompletion() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 0, "Incorrect number of buttons")
             XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
             
@@ -232,7 +232,7 @@ class AlertTests: XCTestCase {
     func testShow() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
             XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
             
@@ -254,7 +254,7 @@ class AlertTests: XCTestCase {
     func testShowOkay() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
             
             if let button = actions.first as? UIAlertAction {
@@ -269,6 +269,77 @@ class AlertTests: XCTestCase {
         }
         
         Alert(title: "Title", message: "Message").showOkay()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
+    
+    func testAddTextField() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+            XCTAssertNotNil(fields, "Fields was nil")
+            if fields != nil {
+                XCTAssertEqual(fields!.count, 1, "Incorrect number of fields")
+            }
+            
+            if let field = fields?.first as? UITextField, placeholder = field.placeholder {
+                XCTAssertEqual(placeholder, "the placeholder", "incorrect placeholder")
+            }
+            else {
+                XCTFail("No text field")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        var textField = UITextField()
+        textField.placeholder = "the placeholder"
+        
+        Alert(message: "text field alert").addTextField(&textField).showOkay()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
+    
+    func testAddMultipleField() {
+        let expectation = expectationWithDescription("Show override")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+            XCTAssertNotNil(fields, "Fields was nil")
+            if fields != nil {
+                XCTAssertEqual(fields!.count, 2, "Incorrect number of fields")
+            }
+            
+            if let first = fields?.first as? UITextField,
+                second = fields?.last as? UITextField {
+                    
+                    XCTAssertNotNil(first.placeholder, "placeholder nil")
+                    if first.placeholder != nil {
+                        XCTAssertEqual(first.placeholder!, "username", "incorrect placeholder")
+                    }
+                    XCTAssertEqual(first.text, "user", "incorrect text")
+                    
+                    XCTAssertNotNil(second.placeholder, "placeholder nil")
+                    if second.placeholder != nil {
+                        XCTAssertEqual(second.placeholder!, "password", "incorrect placeholder")
+                    }
+                    XCTAssertTrue(second.secureTextEntry, "Secure text entry not enabled")
+            }
+            else {
+                XCTFail("No text field")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        var first = UITextField()
+        first.placeholder = "username"
+        first.text = "user"
+        
+        var second = UITextField()
+        second.placeholder = "password"
+        second.secureTextEntry = true
+        
+        Alert(message: "text field alert").addTextField(&first).addTextField(&second).showOkay()
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
@@ -362,7 +433,7 @@ class ActionSheetTests: XCTestCase {
     func testShow() {
         let expectation = expectationWithDescription("Show override")
         
-        LKAlertController.overrideShowForTesting { (style, title, message, actions) -> Void in
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
             XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
             XCTAssertEqual(style, UIAlertControllerStyle.ActionSheet, "Incorrect Style of the alert")
             
