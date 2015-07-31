@@ -18,7 +18,7 @@ public class LKAlertController {
     internal var alertController: UIAlertController
     
     /** Internal static variable to store the override the show method for testing purposes */
-    internal static var alertTester: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject]) -> Void)? = nil
+    internal static var alertTester: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject], fields: [AnyObject]?) -> Void)? = nil
     
     /** Title of the alert controller */
     internal var title: String? {
@@ -50,25 +50,6 @@ public class LKAlertController {
     */
     public init(style: UIAlertControllerStyle) {
         alertController = UIAlertController(title: nil, message: nil, preferredStyle: style)
-    }
-    
-    /**
-    Add a text field to the controller
-    
-    :param: placeholder  Placeholder text for text field
-    :param: secureText  Secure text entry for text field
-    */
-    internal func addTextField(placeholder: String?, secureText: Bool?) -> Alert {
-        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
-            if let placeholder = placeholder {
-                textField.placeholder = placeholder
-            }
-            if let secureText = secureText {
-                textField.secureTextEntry = true
-            }
-        }
-        
-        return self as! Alert
     }
     
     /**
@@ -116,7 +97,7 @@ public class LKAlertController {
     public func show(#animated: Bool, completion: (() -> Void)?) {
         //Override for testing
         if let alertTester = LKAlertController.alertTester {
-            alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions)
+            alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions, fields: alertController.textFields)
             LKAlertController.alertTester = nil
         }
         //Present the alert
@@ -154,7 +135,7 @@ public class LKAlertController {
     /**
     Override the show function with a closure for using with your unit tests
     */
-    public class func overrideShowForTesting(callback: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject]) -> Void)?) {
+    public class func overrideShowForTesting(callback: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject], fields: [AnyObject]?) -> Void)?) {
         alertTester = callback
     }
 }
@@ -205,37 +186,6 @@ public class Alert: LKAlertController {
     }
     
     /**
-    Add a text field to the controller. It will not have any placeholder text nor secure text entry
-    */
-    public func addTextField() -> Alert {
-        super.addTextField(nil, secureText: nil)
-        
-        return self
-    }
-    
-    /**
-    Add a text field with placeholder text to the controller
-    
-    :param: placeholder  Placeholder text for text field
-    */
-    public func addTextField(placeholder: String) -> Alert {
-        super.addTextField(placeholder, secureText: nil)
-        
-        return self
-    }
-    
-    /**
-    Add a text field with secure text entry to the controller
-    
-    :param: secureText  Secure text entry for text field
-    */
-    public func addTextField(secureText: Bool) -> Alert {
-        super.addTextField(nil, secureText: secureText)
-        
-        return self
-    }
-    
-    /**
     Add a new button to the alert. It will not have an action and will have the Cancel style
     
     :param: title  Title of the button
@@ -253,6 +203,25 @@ public class Alert: LKAlertController {
     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
         return super.addAction(title, style: style, handler: handler) as! Alert
+    }
+    
+    /**
+    Add a text field to the controller
+    
+    :param: textField  textField to add to the alert (must be a var, not let)
+    */
+    public func addTextField(inout textField: UITextField) -> Alert {
+        alertController.addTextFieldWithConfigurationHandler { (tf: UITextField!) -> Void in
+            tf.text = textField.text
+            tf.placeholder = textField.placeholder
+            tf.font = textField.font
+            tf.textColor = textField.textColor
+            tf.secureTextEntry = textField.secureTextEntry
+            
+            textField = tf
+        }
+        
+        return self
     }
     
     /**
