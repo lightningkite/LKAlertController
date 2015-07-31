@@ -217,6 +217,7 @@ public class Alert: LKAlertController {
             tf.font = textField.font
             tf.textColor = textField.textColor
             tf.secureTextEntry = textField.secureTextEntry
+            tf.keyboardType = textField.keyboardType
             
             textField = tf
         }
