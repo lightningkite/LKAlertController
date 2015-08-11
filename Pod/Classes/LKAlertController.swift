@@ -218,6 +218,8 @@ public class Alert: LKAlertController {
             tf.textColor = textField.textColor
             tf.secureTextEntry = textField.secureTextEntry
             tf.keyboardType = textField.keyboardType
+            tf.autocapitalizationType = textField.autocapitalizationType
+            tf.autocorrectionType = textField.autocorrectionType
             
             textField = tf
         }
