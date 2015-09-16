@@ -46,7 +46,7 @@ public class LKAlertController {
     /**
     Initialize a new LKAlertController
     
-    :param: style  .ActionSheet or .Alert
+    - parameter style:  .ActionSheet or .Alert
     */
     public init(style: UIAlertControllerStyle) {
         alertController = UIAlertController(title: nil, message: nil, preferredStyle: style)
@@ -55,9 +55,9 @@ public class LKAlertController {
     /**
     Add a new button to the controller.
     
-    :param: title  Title of the button
-    :param: style  Style of the button (.Default, .Cancel, .Destructive)
-    :param: handler  Closure to call when the button is pressed
+    - parameter title:  Title of the button
+    - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
+    - parameter handler:  Closure to call when the button is pressed
     */
     public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)? = nil) -> LKAlertController {
         var action: UIAlertAction
@@ -82,19 +82,19 @@ public class LKAlertController {
     /**
     Present in the view
     
-    :param: animated  Whether to animate into the view or not
+    - parameter animated:  Whether to animate into the view or not
     */
-    public func show(#animated: Bool) {
+    public func show(animated animated: Bool) {
         show(animated: animated, completion: nil)
     }
     
     /**
     Present in the view
     
-    :param: animated  Whether to animate into the view or not
-    :param: completion  Closure to call when the button is pressed
+    - parameter animated:  Whether to animate into the view or not
+    - parameter completion:  Closure to call when the button is pressed
     */
-    public func show(#animated: Bool, completion: (() -> Void)?) {
+    public func show(animated animated: Bool, completion: (() -> Void)?) {
         //Override for testing
         if let alertTester = LKAlertController.alertTester {
             alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions, fields: alertController.textFields)
@@ -155,7 +155,7 @@ public class Alert: LKAlertController {
     /**
     Create a new alert with a title
     
-    :param: title  Title of the alert
+    - parameter title:  Title of the alert
     */
     public init(title: String?) {
         super.init(style: .Alert)
@@ -165,7 +165,7 @@ public class Alert: LKAlertController {
     /**
     Create a new alert with a message
     
-    :param: message  Body of the alert
+    - parameter message:  Body of the alert
     */
     public init(message: String?) {
         super.init(style: .Alert)
@@ -176,8 +176,8 @@ public class Alert: LKAlertController {
     /**
     Create a new alert with a title and message
     
-    :param: title  Title of the alert
-    :param: message  Body of the alert
+    - parameter title:  Title of the alert
+    - parameter message:  Body of the alert
     */
     public init(title: String?, message: String?) {
         super.init(style: .Alert)
@@ -188,7 +188,7 @@ public class Alert: LKAlertController {
     /**
     Add a new button to the alert. It will not have an action and will have the Cancel style
     
-    :param: title  Title of the button
+    - parameter title:  Title of the button
     */
     public func addAction(title: String) -> Alert {
         return addAction(title, style: .Cancel, handler: nil)
@@ -197,9 +197,9 @@ public class Alert: LKAlertController {
     /**
     Add a new button to the alert.
     
-    :param: title  Title of the button
-    :param: style  Style of the button (.Default, .Cancel, .Destructive)
-    :param: handler  Closure to call when the button is pressed
+    - parameter title:  Title of the button
+    - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
+    - parameter handler:  Closure to call when the button is pressed
     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
         return super.addAction(title, style: style, handler: handler) as! Alert
@@ -208,7 +208,7 @@ public class Alert: LKAlertController {
     /**
     Add a text field to the controller
     
-    :param: textField  textField to add to the alert (must be a var, not let)
+    - parameter textField:  textField to add to the alert (must be a var, not let)
     */
     public func addTextField(inout textField: UITextField) -> Alert {
         alertController.addTextFieldWithConfigurationHandler { (tf: UITextField!) -> Void in
@@ -251,7 +251,7 @@ public class ActionSheet: LKAlertController {
     /**
     Create a new action sheet with a title
     
-    :param: title  Title of the action sheet
+    - parameter title:  Title of the action sheet
     */
     public init(title: String?) {
         super.init(style: .ActionSheet)
@@ -261,7 +261,7 @@ public class ActionSheet: LKAlertController {
     /**
     Create a new action sheet with a message
     
-    :param: message  Body of the action sheet
+    - parameter message:  Body of the action sheet
     */
     public init(message: String?) {
         super.init(style: .ActionSheet)
@@ -272,8 +272,8 @@ public class ActionSheet: LKAlertController {
     /**
     Create a new action sheet with a title and message
     
-    :param: title  Title of the action sheet
-    :param: message  Body of the action sheet
+    - parameter title:  Title of the action sheet
+    - parameter message:  Body of the action sheet
     */
     public init(title: String?, message: String?) {
         super.init(style: .ActionSheet)
@@ -284,7 +284,7 @@ public class ActionSheet: LKAlertController {
     /**
     Add a new button to the action sheet. It will not have an action and will have the Cancel style
     
-    :param: title  Title of the button
+    - parameter title:  Title of the button
     */
     public func addAction(title: String) -> ActionSheet {
         return addAction(title, style: .Cancel, handler: nil)
@@ -293,9 +293,9 @@ public class ActionSheet: LKAlertController {
     /**
     Add a new button to the action sheet.
     
-    :param: title  Title of the button
-    :param: style  Style of the button (.Default, .Cancel, .Destructive)
-    :param: handler  Closure to call when the button is pressed
+    - parameter title:  Title of the button
+    - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
+    - parameter handler:  Closure to call when the button is pressed
     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> ActionSheet {
         return super.addAction(title, style: style, handler: handler) as! ActionSheet
@@ -305,7 +305,7 @@ public class ActionSheet: LKAlertController {
     Set the presenting bar button item. Used for presenting the action sheet on iPad.
     If this isn't set, it will default to the presenting view on iPad.
     
-    :param: item  UIBarButtonItem that the action sheet will present from
+    - parameter item:  UIBarButtonItem that the action sheet will present from
     */
     public func setBarButtonItem(item: UIBarButtonItem) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
@@ -320,7 +320,7 @@ public class ActionSheet: LKAlertController {
     Set the presenting source view. Used for presenting the action sheet on iPad.
     If this isn't set, it will default to the presenting view on iPad.
     
-    :param: source  The view the action sheet will present from
+    - parameter source:  The view the action sheet will present from
     */
     public func setPresentingSource(source: UIView) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
