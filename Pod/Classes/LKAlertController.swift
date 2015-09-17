@@ -114,7 +114,7 @@ public class LKAlertController {
                     
                     var topController = presentedController
                     while (topController.childViewControllers.last != nil) {
-                        topController = topController.childViewControllers.last as! UIViewController
+                        topController = topController.childViewControllers.last!
                     }
                     
                     popoverController.sourceView = topController.view
