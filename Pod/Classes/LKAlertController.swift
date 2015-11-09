@@ -315,6 +315,18 @@ public class ActionSheet: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
+    public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> ActionSheet {
+        return addAction(title, style: style, handler: handler, preferredAction: false)
+    }
+    
+    /**
+     Add a new button to the action sheet.
+     
+     - parameter title:  Title of the button
+     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
+     - parameter handler:  Closure to call when the button is pressed
+     - parameter preferredAction: We hardcode this argument as 'false' because the preferred action is relevant for the UIAlertControllerStyleAlert style only; it is not used by action sheets.
+     */
     public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?, preferredAction:Bool) -> ActionSheet {
         return super.addAction(title, style: style, handler: handler, preferredAction: false) as! ActionSheet
     }
