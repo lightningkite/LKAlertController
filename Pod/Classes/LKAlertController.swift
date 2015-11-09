@@ -59,7 +59,7 @@ public class LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
-    public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)? = nil) -> LKAlertController {
+    public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)? = nil, preferredAction: Bool) -> LKAlertController {
         var action: UIAlertAction
         if let handler = handler {
             action = UIAlertAction(title: title, style: style, handler: handler)
@@ -68,6 +68,12 @@ public class LKAlertController {
         }
         
         alertController.addAction(action)
+        
+        if #available(iOS 9.0, *) {
+            if preferredAction {
+                alertController.preferredAction = action
+            }
+        }
         
         return self
     }
@@ -191,7 +197,7 @@ public class Alert: LKAlertController {
     - parameter title:  Title of the button
     */
     public func addAction(title: String) -> Alert {
-        return addAction(title, style: .Cancel, handler: nil)
+        return addAction(title, style: .Cancel, handler: nil, preferredAction: false)
     }
     
     /**
@@ -201,8 +207,20 @@ public class Alert: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
-    public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
-        return super.addAction(title, style: style, handler: handler) as! Alert
+    public func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> Alert {
+        return addAction(title, style: style, handler: handler, preferredAction: false)
+    }
+    
+    /**
+     Add a new action to the alert as the preferredAction .
+     
+     - parameter title:  Title of the button
+     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
+     - parameter handler:  Closure to call when the button is pressed
+     - parameter preferredAction: The preferred action for the user to take from an alert.
+     */
+    public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?, preferredAction: Bool) -> Alert {
+        return super.addAction(title, style: style, handler: handler, preferredAction: preferredAction) as! Alert
     }
     
     /**
@@ -231,7 +249,7 @@ public class Alert: LKAlertController {
     Shortcut method for adding an Okay button and showing the alert
     */
     public func showOkay() {
-        super.addAction("Okay", style: .Cancel, handler: nil)
+        super.addAction("Okay", style: .Cancel, handler: nil, preferredAction: false)
         show()
     }
 }
@@ -287,7 +305,7 @@ public class ActionSheet: LKAlertController {
     - parameter title:  Title of the button
     */
     public func addAction(title: String) -> ActionSheet {
-        return addAction(title, style: .Cancel, handler: nil)
+        return addAction(title, style: .Cancel, handler: nil, preferredAction: false)
     }
     
     /**
@@ -297,8 +315,8 @@ public class ActionSheet: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
-    public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?) -> ActionSheet {
-        return super.addAction(title, style: style, handler: handler) as! ActionSheet
+    public override func addAction(title: String, style: UIAlertActionStyle, handler: ((UIAlertAction!) -> Void)?, preferredAction:Bool) -> ActionSheet {
+        return super.addAction(title, style: style, handler: handler, preferredAction: false) as! ActionSheet
     }
     
     /**
