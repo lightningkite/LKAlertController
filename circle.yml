@@ -1,15 +1,18 @@
 machine:
   xcode:
-    version: "7.0"
+    version: "7.1"
 test:
   override:
-    - xctool
-      -reporter pretty
-      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
-      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
-      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-      -sdk iphonesimulator
-      -workspace Example/LKAlertController.xcworkspace
-      -scheme "LKAlertController-Example"
-      build build-tests run-tests analyze
+    - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,name=iPhone6,OS=latest'
+        -workspace Example/LKAlertController.xcworkspace
+        -scheme "LKAlertController-Example"
+        test | 
+    tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+    xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
     - pod lib lint
