@@ -1,6 +1,6 @@
 # LKAlertController
 
-[![Circle CI](https://circleci.com/gh/lightningkite/LKAlertController.svg?style=svg)](https://circleci.com/gh/lightningkite/LKAlertController)
+[![Circle CI](https://circleci.com/gh/lightningkite/LKAlertController/tree/master.svg?style=svg)](https://circleci.com/gh/lightningkite/LKAlertController)
 [![Version](https://img.shields.io/cocoapods/v/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![License](https://img.shields.io/cocoapods/l/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/LKAlertController.svg?style=flat)](http://cocoapods.org/pods/LKAlertController)
@@ -95,6 +95,14 @@ textField.placeholder = "Password"
 textField.secureTextEntry = true
 
 Alert().addTextfield(&textField).showOkay()
+```
+
+You can also configure the `preferredAction` property on an alert. This will highlight the text of the action, and pressing the return key on a physical keyboard will trigger this action.
+
+``` Swift
+Alert()
+	.addAction("Okay", style: .Default, preferredAction: true)
+	.show()
 ```
 
 ### ActionSheet Specific Configuration
