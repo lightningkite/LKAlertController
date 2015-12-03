@@ -13,6 +13,6 @@ test:
         -workspace Example/LKAlertController.xcworkspace
         -scheme "LKAlertController-Example"
         test | 
-    tee $CIRCLE_ARTIFACTS/xcode_raw.log |
-    xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
+      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
     - pod lib lint
