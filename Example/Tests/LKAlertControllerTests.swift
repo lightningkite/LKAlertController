@@ -28,7 +28,7 @@ class LKAlertControllerTests: XCTestCase {
             print("TESTING")
         }
         
-        let controller = LKAlertController(style: .Alert).addAction("Okay", style: .Default, handler: handler).getAlertController()
+        let controller = LKAlertController(style: .Alert).addAction("Okay", style: .Default, preferredAction: false, handler: handler).getAlertController()
         XCTAssertEqual(controller.actions.count, 1, "The number of actions was incorrect")
         
         if let action = controller.actions.first {
@@ -46,7 +46,7 @@ class LKAlertControllerTests: XCTestCase {
         }
         
         let controller = LKAlertController(style: .Alert)
-            .addAction("Okay", style: .Default, handler: handler).addAction("Cancel", style: .Cancel, handler: handler)
+            .addAction("Okay", style: .Default, preferredAction: false, handler: handler).addAction("Cancel", style: .Cancel, handler: handler)
             .getAlertController()
         
         XCTAssertEqual(controller.actions.count, 2, "The number of actions was incorrect")
