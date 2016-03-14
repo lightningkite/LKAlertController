@@ -87,6 +87,18 @@ There is a shortcut on alerts to show with an okay button: `showOkay`
 Alert(title: "Stuff has happened").showOkay()
 ```
 
+You can also add your own shortcut show method. The following adds a `showNevermind` button that adds a `Nevermind` button and shows the alert.
+
+``` Swift
+extension Alert {
+	///Shortcut method for adding a nevermind button and showing the alert
+	public func showNevermind() {
+		super.addAction("Nevermind", style: .Cancel, handler: nil, preferredAction: false)
+		show()
+	}
+}
+```
+
 Text fields can also be added to alerts. To add a text field, initialize a text field first, and configure it, then pass it in with the alert. Note that text fields must be initialized as `var` rather than `let`
 
 ``` Swift

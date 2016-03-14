@@ -451,4 +451,36 @@ class ActionSheetTests: XCTestCase {
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
+	
+	func testNevermindExtension() {
+		let expectation = expectationWithDescription("Nevermind Extension")
+		
+		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+			XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
+			XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+			
+			if let button = actions.first as? UIAlertAction {
+				XCTAssertEqual(button.title, "Nevermind", "Incorrect title of button")
+			}
+			else {
+				XCTFail("No button")
+			}
+			
+			expectation.fulfill()
+		}
+		
+		Alert().showNevermind()
+		
+		waitForExpectationsWithTimeout(0.5, handler: nil)
+	}
 }
+
+
+extension Alert {
+	///Shortcut method for adding a nevermind button and showing the alert
+	public func showNevermind() {
+		super.addAction("Nevermind", style: .Cancel, handler: nil, preferredAction: false)
+		show()
+	}
+}
+
