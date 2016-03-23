@@ -1,5 +1,11 @@
 ## Change Log
 
+### 1.6.2 (2016/03/23 13:27 +00:00)
+- [7b19d08](https://github.com/lightningkite/LKAlertController/commit/7b19d086b1da448774019670ea136278c48bfcdc) Bumping version number (@eriksargent)
+- [#24](https://github.com/Lightningkite/LKAlertController/pull/24) Merge pull request #24 from magnusottosson/master (@magnusottosson)
+- [ae01805](https://github.com/lightningkite/LKAlertController/commit/ae01805c09430d99d6dd5c75d3ed2630bc9db965) Removed unused assets reference causing issues with cocoapods beta 1.0.0beta6
+- [c444fd7](https://github.com/lightningkite/LKAlertController/commit/c444fd718a3b0a639ae1614a6723288d1f9d9363) Updating changelog (@eriksargent)
+
 ### 1.6.1 (2016/03/14 19:49 +00:00)
 - [36c5fb8](https://github.com/lightningkite/LKAlertController/commit/36c5fb8fe2114a7c05e2ab0914ef62f188978168) Updating documentation with how to add your own shortcut show method on alert (@eriksargent)
 - [3384ddc](https://github.com/lightningkite/LKAlertController/commit/3384ddca37602e899c2126d249d38539ec8e60d9) Adding a changelog (@eriksargent)
