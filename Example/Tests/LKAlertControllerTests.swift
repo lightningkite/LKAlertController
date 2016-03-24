@@ -28,7 +28,7 @@ class LKAlertControllerTests: XCTestCase {
             print("TESTING")
         }
         
-        let controller = LKAlertController(style: .Alert).addAction("Okay", style: .Default, preferredAction: false, handler: handler).getAlertController()
+        let controller = LKAlertController(style: .Alert).addAction("Okay", style: .Default, handler: handler).getAlertController()
         XCTAssertEqual(controller.actions.count, 1, "The number of actions was incorrect")
         
         if let action = controller.actions.first {
@@ -46,7 +46,7 @@ class LKAlertControllerTests: XCTestCase {
         }
         
         let controller = LKAlertController(style: .Alert)
-            .addAction("Okay", style: .Default, preferredAction: false, handler: handler).addAction("Cancel", style: .Cancel, handler: handler)
+            .addAction("Okay", style: .Default, handler: handler).addAction("Cancel", style: .Cancel, handler: handler)
             .getAlertController()
         
         XCTAssertEqual(controller.actions.count, 2, "The number of actions was incorrect")
@@ -343,6 +343,28 @@ class AlertTests: XCTestCase {
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
+    
+    func testNevermindExtension() {
+        let expectation = expectationWithDescription("Nevermind Extension")
+        
+        LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+            XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
+            XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
+            
+            if let button = actions.first as? UIAlertAction {
+                XCTAssertEqual(button.title, "Nevermind", "Incorrect title of button")
+            }
+            else {
+                XCTFail("No button")
+            }
+            
+            expectation.fulfill()
+        }
+        
+        Alert().showNevermind()
+        
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+    }
 }
 
 
@@ -451,35 +473,18 @@ class ActionSheetTests: XCTestCase {
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
-	
-	func testNevermindExtension() {
-		let expectation = expectationWithDescription("Nevermind Extension")
-		
-		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
-			XCTAssertEqual(actions.count, 1, "Incorrect number of buttons")
-			XCTAssertEqual(style, UIAlertControllerStyle.Alert, "Incorrect Style of the alert")
-			
-			if let button = actions.first as? UIAlertAction {
-				XCTAssertEqual(button.title, "Nevermind", "Incorrect title of button")
-			}
-			else {
-				XCTFail("No button")
-			}
-			
-			expectation.fulfill()
-		}
-		
-		Alert().showNevermind()
-		
-		waitForExpectationsWithTimeout(0.5, handler: nil)
-	}
+    
+    func testGithubIssue26() {
+        //https://github.com/lightningkite/LKALertController/issues/26
+        ActionSheet().addAction("Test", style: .Default, handler: { _ in print("Test") }).show()
+    }
 }
 
 
 extension Alert {
 	///Shortcut method for adding a nevermind button and showing the alert
 	public func showNevermind() {
-		super.addAction("Nevermind", style: .Cancel, handler: nil, preferredAction: false)
+		addAction("Nevermind", style: .Cancel, preferredAction: false, handler: nil)
 		show()
 	}
 }
