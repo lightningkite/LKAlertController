@@ -93,7 +93,7 @@ You can also add your own shortcut show method. The following adds a `showNeverm
 extension Alert {
 	///Shortcut method for adding a nevermind button and showing the alert
 	public func showNevermind() {
-		super.addAction("Nevermind", style: .Cancel, handler: nil, preferredAction: false)
+		addAction("Nevermind", style: .Cancel, preferredAction: false, handler: nil)
 		show()
 	}
 }
