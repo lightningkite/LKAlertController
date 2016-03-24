@@ -1,5 +1,11 @@
 ## Change Log
 
+### 1.7.0 (2016/03/24 15:43 +00:00)
+- [184c0c6](https://github.com/lightningkite/LKAlertController/commit/184c0c6cbcd4e4155245bb9c70036dec64f28a01) Incrementing the version on LKAlertController for swift 2.2 release (@eriksargent)
+- [ce49f5e](https://github.com/lightningkite/LKAlertController/commit/ce49f5e8b44a0de6bd7db6265fc0677d1f1c01b4) Fixing github issue 26 and cleaning up the action handler with a typealias (@eriksargent)
+- [e0a7122](https://github.com/lightningkite/LKAlertController/commit/e0a71228d8d02c9d147df09f2d493a8841536403) Adding test for github issue 26, and cleaning up a test that was in the wrong place (@eriksargent)
+- [d0c79a6](https://github.com/lightningkite/LKAlertController/commit/d0c79a6a835f352a4d8348d0a11e41da1236f0ea) Updating changelog (@eriksargent)
+
 ### 1.6.2 (2016/03/23 13:27 +00:00)
 - [7b19d08](https://github.com/lightningkite/LKAlertController/commit/7b19d086b1da448774019670ea136278c48bfcdc) Bumping version number (@eriksargent)
 - [#24](https://github.com/Lightningkite/LKAlertController/pull/24) Merge pull request #24 from magnusottosson/master (@magnusottosson)
