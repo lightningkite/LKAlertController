@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LKAlertController"
-  s.version          = "1.7.0"
+  s.version          = "1.8.1"
   s.summary          = "An easy to use UIAlertController builder for swift"
   s.homepage         = "https://github.com/lightningkite/LKAlertController"
   s.license          = 'MIT'
