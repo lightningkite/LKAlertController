@@ -176,6 +176,26 @@ it, simply add the following line to your Podfile:
 pod "LKAlertController"
 ```
 
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate LKAlertController into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "lightningkite/LKAlertController"
+```
+
+Run `carthage update` to build the framework and drag the built `LKAlertController.framework` into your Xcode project.
+
+
 ## Issues Questions and Contributing
 Have an issue, or want to request a feature? Create an issue in github.
 
