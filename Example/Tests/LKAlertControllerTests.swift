@@ -145,17 +145,19 @@ class LKAlertControllerTests: XCTestCase {
 	func testDelay() {
 		let expectation = expectationWithDescription("Delay testing")
 		
-		let startTime = NSDate()
+		var startTime = NSDate()
 		
 		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
 			
 			let endTime = NSDate()
-			let delayTime = Int(endTime.timeIntervalSinceDate(startTime))
+			let delayTime = Int(round(endTime.timeIntervalSinceDate(startTime)))
 			
 			XCTAssertEqual(delayTime, 5)
 			
 			expectation.fulfill()
 		}
+		
+		startTime = NSDate()
 		
 		Alert(title: "Title", message: "Message").addAction("Cancel").delay(5).show()
 		
