@@ -1,6 +1,7 @@
 ## Change Log
 
-### upcoming (2016/05/09 17:22 +00:00)
+### 1.9.0 (2016/05/09 17:22 +00:00)
+- [4c204f2](https://github.com/lightningkite/LKAlertController/commit/4c204f2de91c7afe978cb956980893fb01eedc67) Updating build number (@eriksargent)
 - [#30](https://github.com/LightningKite/LKAlertController/pull/30) Merge pull request #30 from lightningkite/AsynchronousPresentation (@lightningkite)
 - [94a19de](https://github.com/lightningkite/LKAlertController/commit/94a19de5b42ddad806fe3b22242e32f29c1b4701) More improvements to the delay test (@eriksargent)
 - [4762a47](https://github.com/lightningkite/LKAlertController/commit/4762a471f0ebd8a4bf4eb534397679652311c787) Fixing issue with delay test (@eriksargent)
