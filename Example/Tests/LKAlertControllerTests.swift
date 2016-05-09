@@ -150,7 +150,7 @@ class LKAlertControllerTests: XCTestCase {
 		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
 			
 			let endTime = NSDate()
-			let delayTime = Int(startTime.timeIntervalSinceDate(endTime))
+			let delayTime = Int(endTime.timeIntervalSinceDate(startTime))
 			
 			XCTAssertEqual(delayTime, 5)
 			
