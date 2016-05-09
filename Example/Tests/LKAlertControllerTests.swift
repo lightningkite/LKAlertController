@@ -141,6 +141,28 @@ class LKAlertControllerTests: XCTestCase {
         
         waitForExpectationsWithTimeout(0.5, handler: nil)
     }
+	
+	func testDelay() {
+		let expectation = expectationWithDescription("Delay testing")
+		
+		var startTime = NSDate()
+		
+		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+			
+			let endTime = NSDate()
+			let delayTime = Int(round(endTime.timeIntervalSinceDate(startTime)))
+			
+			XCTAssertEqual(delayTime, 5)
+			
+			expectation.fulfill()
+		}
+		
+		startTime = NSDate()
+		
+		Alert(title: "Title", message: "Message").addAction("Cancel").delay(5).show()
+		
+		waitForExpectationsWithTimeout(6, handler: nil)
+	}
 }
 
 
