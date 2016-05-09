@@ -14,11 +14,18 @@ Base class for creating an alert controller.
 Use Alert or ActionSheet instead
 */
 public class LKAlertController {
+	///UIAlertActions callback
     public typealias actionHandler = UIAlertAction! -> Void
     
     ///Internal alert controller to present to the user
     internal var alertController: UIAlertController
-    
+	
+	///Internal storage of view to present in
+	internal var presentationSource: UIViewController? = nil
+	
+	///Internal storage of time to delay before presenting
+	internal var delayTime: NSTimeInterval? = nil
+	
     ///Internal static variable to store the override the show method for testing purposes
     internal static var alertTester: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject], fields: [AnyObject]?) -> Void)? = nil
     
@@ -95,6 +102,18 @@ public class LKAlertController {
         
         return self
     }
+	
+	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	public func presentIn(source: UIViewController) -> LKAlertController {
+		presentationSource = source
+		return self
+	}
+	
+	//Delay the presentation of the controller.
+	public func delay(time: NSTimeInterval) -> LKAlertController {
+		delayTime = time
+		return self
+	}
     
     ///Present in the view
     public func show() {
@@ -117,6 +136,17 @@ public class LKAlertController {
     - parameter completion:  Closure to call when the button is pressed
     */
     public func show(animated animated: Bool, completion: (() -> Void)?) {
+		//If a delay time has been set, delay the presentation of the alert by the delayTime
+		if let time = delayTime {
+			let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
+			dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+				self.show(animated: animated, completion: completion)
+			}
+			
+			delayTime = nil
+			return
+		}
+		
         //Override for testing
         if let alertTester = LKAlertController.alertTester {
             alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions, fields: alertController.textFields)
@@ -126,7 +156,7 @@ public class LKAlertController {
         else if let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
             //Find the presented view controller
             var presentedController = viewController
-            while (presentedController.presentedViewController != nil) {
+            while presentedController.presentedViewController != nil && presentedController.presentedViewController?.isBeingDismissed() == false {
                 presentedController = presentedController.presentedViewController!
             }
             
@@ -142,6 +172,11 @@ public class LKAlertController {
                     popoverController.sourceView = topController.view
                     popoverController.sourceRect = topController.view.bounds
             }
+			
+			//Set the presentedController to the one the user has optionally assigned
+			if let source = presentationSource {
+				presentedController = source
+			}
             
             presentedController.presentViewController(alertController, animated: animated, completion: completion)
         }
@@ -252,6 +287,16 @@ public class Alert: LKAlertController {
         
         return self
     }
+	
+	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	public override func presentIn(source: UIViewController) -> Alert {
+		return super.presentIn(source) as! Alert
+	}
+	
+	//Delay the presentation of the controller.
+	public override func delay(time: NSTimeInterval) -> Alert {
+		return super.delay(time) as! Alert
+	}
     
     ///Shortcut method for adding an Okay button and showing the alert
     public func showOkay() {
@@ -320,6 +365,16 @@ public class ActionSheet: LKAlertController {
     public override func addAction(title: String, style: UIAlertActionStyle, handler: actionHandler?) -> ActionSheet {
         return super.addAction(title, style: style, preferredAction: false, handler: handler) as! ActionSheet
     }
+	
+	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	public override func presentIn(source: UIViewController) -> ActionSheet {
+		return super.presentIn(source) as! ActionSheet
+	}
+	
+	//Delay the presentation of the controller.
+	public override func delay(time: NSTimeInterval) -> ActionSheet {
+		return super.delay(time) as! ActionSheet
+	}
     
     /**
     Set the presenting bar button item. Used for presenting the action sheet on iPad.
