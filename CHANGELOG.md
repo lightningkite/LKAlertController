@@ -1,5 +1,15 @@
 ## Change Log
 
+### upcoming (2016/05/09 17:22 +00:00)
+- [#30](https://github.com/LightningKite/LKAlertController/pull/30) Merge pull request #30 from lightningkite/AsynchronousPresentation (@lightningkite)
+- [94a19de](https://github.com/lightningkite/LKAlertController/commit/94a19de5b42ddad806fe3b22242e32f29c1b4701) More improvements to the delay test (@eriksargent)
+- [4762a47](https://github.com/lightningkite/LKAlertController/commit/4762a471f0ebd8a4bf4eb534397679652311c787) Fixing issue with delay test (@eriksargent)
+- [01cd5f0](https://github.com/lightningkite/LKAlertController/commit/01cd5f00adcc79a260a41c83ff0f47cbc9e72ce9) Adding test for the delay (@eriksargent)
+- [27a1ee3](https://github.com/lightningkite/LKAlertController/commit/27a1ee3ab070fef0d377d29fcdb6820ddeb9fcda) Updating LKAlertController to present on views that are not being dismissed, and adding presentIn and delay functions (@eriksargent)
+
+### 1.8.1 (2016/05/02 22:23 +00:00)
+- [2f77791](https://github.com/lightningkite/LKAlertController/commit/2f77791858d73b308623645b1b93a9c8a78c9c09) Fixing issue with carthage (@eriksargent)
+
 ### 1.8.0 (2016/05/02 22:03 +00:00)
 - [#28](https://github.com/LightningKite/LKAlertController/pull/28) Merge pull request #28 from hardikdevios/master (@hardikdevios)
 - [475982f](https://github.com/lightningkite/LKAlertController/commit/475982f340c499034e3d473656651a74bb562610) - Updated README.md (@hardikdevios)
@@ -34,8 +44,8 @@
 - [6779509](https://github.com/lightningkite/LKAlertController/commit/677950926d657032853bc4f9862e028351a845aa) Adding preferredAction to README (@eriksargent)
 - [7f658e4](https://github.com/lightningkite/LKAlertController/commit/7f658e48e7f0ae4875764397a7e672e9e9a5e41f) Fixing tests for preferredAction and cleaning up preferredAction code and documentation (@eriksargent)
 - [#23](https://github.com/LightningKite/LKAlertController/pull/23) Merge pull request #23 from andela-aonawale/feature/preferred-action (@andela-aonawale)
-- [d9208f2](https://github.com/lightningkite/LKAlertController/commit/d9208f28ae7d29036e663b1f4c34716536f172d1) override addAction method from super class and hardcoded the preferredAction argument to be false because its applicable to alerts only (@andela-aonawale)
-- [c25c587](https://github.com/lightningkite/LKAlertController/commit/c25c58702ff5090ba906cb978b989b4b0299a411) add preferredAction feature to LKAlertController (@andela-aonawale)
+- [d9208f2](https://github.com/lightningkite/LKAlertController/commit/d9208f28ae7d29036e663b1f4c34716536f172d1) override addAction method from super class and hardcoded the preferredAction argument to be false because its applicable to alerts only (@aonawale)
+- [c25c587](https://github.com/lightningkite/LKAlertController/commit/c25c58702ff5090ba906cb978b989b4b0299a411) add preferredAction feature to LKAlertController (@aonawale)
 - [09cc527](https://github.com/lightningkite/LKAlertController/commit/09cc527891f5ca076cf5561ec090c123e2b59032) Making circle use xcode 7 (@eriksargent)
 
 ### 1.5.0 (2015/09/17 14:48 +00:00)
