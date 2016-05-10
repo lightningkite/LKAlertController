@@ -1,5 +1,10 @@
 ## Change Log
 
+### 1.9.1 (2016/05/10 15:08 +00:00)
+- [#31](https://github.com/LightningKite/LKAlertController/pull/31) Merge pull request #31 from lightningkite/DispatchMainThread (@lightningkite)
+- [49bc1a9](https://github.com/lightningkite/LKAlertController/commit/49bc1a9e4d13b0a30960337b96d86e4f39465e04) Making sure the presenting of the controller always happens in the main thread (@eriksargent)
+- [9be2316](https://github.com/lightningkite/LKAlertController/commit/9be2316bb93af8240adb2bca6d2aca70be0d2a31) Updating changelog (@eriksargent)
+
 ### 1.9.0 (2016/05/09 17:22 +00:00)
 - [4c204f2](https://github.com/lightningkite/LKAlertController/commit/4c204f2de91c7afe978cb956980893fb01eedc67) Updating build number (@eriksargent)
 - [#30](https://github.com/LightningKite/LKAlertController/pull/30) Merge pull request #30 from lightningkite/AsynchronousPresentation (@lightningkite)
