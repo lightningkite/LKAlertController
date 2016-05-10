@@ -177,8 +177,10 @@ public class LKAlertController {
 			if let source = presentationSource {
 				presentedController = source
 			}
-            
-            presentedController.presentViewController(alertController, animated: animated, completion: completion)
+			
+			dispatch_async(dispatch_get_main_queue()) {
+				presentedController.presentViewController(self.alertController, animated: animated, completion: completion)
+			}
         }
     }
     
