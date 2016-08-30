@@ -138,7 +138,7 @@ public class LKAlertController {
     public func show(animated: Bool, completion: (() -> Void)?) {
 		//If a delay time has been set, delay the presentation of the alert by the delayTime
 		if let time = delayTime {
-			let dispatchTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+			let dispatchTime = DispatchTime.now() + time
 			DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
 				self.show(animated: animated, completion: completion)
 			}
