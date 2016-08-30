@@ -273,8 +273,10 @@ public class Alert: LKAlertController {
     
     - parameter textField:  textField to add to the alert (must be a var, not let)
     */
-    public func addTextField(_ textField: UITextField) -> Alert {
-        alertController.addTextField { (tf: UITextField!) -> Void in
+    public func addTextField( _ textField: inout UITextField) -> Alert {
+		var field: UITextField?
+		
+        alertController.addTextField { [unowned textField] (tf: UITextField!) -> Void in
             tf.text = textField.text
             tf.placeholder = textField.placeholder
             tf.font = textField.font
@@ -284,8 +286,12 @@ public class Alert: LKAlertController {
             tf.autocapitalizationType = textField.autocapitalizationType
             tf.autocorrectionType = textField.autocorrectionType
             
-            //textField = tf
+            field = tf
         }
+		
+		if let field = field {
+			textField = field
+		}
         
         return self
     }

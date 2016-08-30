@@ -317,7 +317,7 @@ class AlertTests: XCTestCase {
         var textField = UITextField()
         textField.placeholder = "the placeholder"
         
-        Alert(message: "text field alert").addTextField(textField).showOkay()
+        Alert(message: "text field alert").addTextField(&textField).showOkay()
         
         waitForExpectations(timeout: 0.5, handler: nil)
     }
@@ -353,19 +353,52 @@ class AlertTests: XCTestCase {
             expectation.fulfill()
         }
         
-        let first = UITextField()
+        var first = UITextField()
         first.placeholder = "username"
         first.text = "user"
         
-        let second = UITextField()
+        var second = UITextField()
         second.placeholder = "password"
         second.isSecureTextEntry = true
         
-        Alert(message: "text field alert").addTextField(first).addTextField(second).showOkay()
+        Alert(message: "text field alert").addTextField(&first).addTextField(&second).showOkay()
         
         waitForExpectations(timeout: 0.5, handler: nil)
     }
-    
+	
+	func testTextFieldsInCallback() {
+		let expectation = self.expectation(description: "Show override")
+		
+		var firstField = UITextField()
+		var secondField = UITextField()
+		
+		LKAlertController.overrideShowForTesting { (style, title, message, actions, fields) -> Void in
+			XCTAssertNotNil(fields, "Fields was nil")
+			if fields != nil {
+				XCTAssertEqual(fields!.count, 2, "Incorrect number of fields")
+			}
+			
+			if let first = fields?.first as? UITextField,
+				let second = fields?.last as? UITextField {
+				
+				first.text = "TESTING!"
+				second.text = "ALSO TESTING!"
+				
+				XCTAssertEqual(firstField.text, first.text)
+				XCTAssertEqual(secondField.text, second.text)
+			}
+			else {
+				XCTFail("No text field")
+			}
+			
+			expectation.fulfill()
+		}
+		
+		Alert(message: "text field alert").addTextField(&firstField).addTextField(&secondField).showOkay()
+		
+		waitForExpectations(timeout: 0.5, handler: nil)
+	}
+	
     func testNevermindExtension() {
         let expectation = self.expectation(description: "Nevermind Extension")
         
@@ -506,7 +539,7 @@ class ActionSheetTests: XCTestCase {
 extension Alert {
 	///Shortcut method for adding a nevermind button and showing the alert
 	public func showNevermind() {
-		addAction("Nevermind", style: .cancel, preferredAction: false, handler: nil)
+		_ = addAction("Nevermind", style: .cancel, preferredAction: false, handler: nil)
 		show()
 	}
 }
