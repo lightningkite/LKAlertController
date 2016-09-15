@@ -15,7 +15,7 @@ Use Alert or ActionSheet instead
 */
 public class LKAlertController {
 	///UIAlertActions callback
-    public typealias actionHandler = UIAlertAction! -> Void
+    public typealias actionHandler = (UIAlertAction!) -> Void
     
     ///Internal alert controller to present to the user
     internal var alertController: UIAlertController
@@ -24,10 +24,10 @@ public class LKAlertController {
 	internal var presentationSource: UIViewController? = nil
 	
 	///Internal storage of time to delay before presenting
-	internal var delayTime: NSTimeInterval? = nil
+	internal var delayTime: TimeInterval? = nil
 	
     ///Internal static variable to store the override the show method for testing purposes
-    internal static var alertTester: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject], fields: [AnyObject]?) -> Void)? = nil
+    internal static var alertTester: ((_ style: UIAlertControllerStyle, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)? = nil
     
     ///Title of the alert controller
     internal var title: String? {
@@ -69,7 +69,7 @@ public class LKAlertController {
      - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
      - parameter handler:  Closure to call when the button is pressed
      */
-    public func addAction(title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> LKAlertController {
+    public func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> LKAlertController {
         addAction(title, style: style, preferredAction: false, handler: handler)
         
         return self
@@ -84,7 +84,7 @@ public class LKAlertController {
     - parameter preferredAction: Whether or not this action is the default action when return is pressed on a hardware keyboard
     - parameter handler:  Closure to call when the button is pressed
     */
-    internal func addAction(title: String, style: UIAlertActionStyle, preferredAction: Bool = false, handler: actionHandler? = nil) -> LKAlertController {
+    internal func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool = false, handler: actionHandler? = nil) -> LKAlertController {
         var action: UIAlertAction
         if let handler = handler {
             action = UIAlertAction(title: title, style: style, handler: handler)
@@ -104,13 +104,13 @@ public class LKAlertController {
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
-	public func presentIn(source: UIViewController) -> LKAlertController {
+	public func presentIn(_ source: UIViewController) -> LKAlertController {
 		presentationSource = source
 		return self
 	}
 	
 	//Delay the presentation of the controller.
-	public func delay(time: NSTimeInterval) -> LKAlertController {
+	public func delay(_ time: TimeInterval) -> LKAlertController {
 		delayTime = time
 		return self
 	}
@@ -125,7 +125,7 @@ public class LKAlertController {
     
     - parameter animated:  Whether to animate into the view or not
     */
-    public func show(animated animated: Bool) {
+    public func show(animated: Bool) {
         show(animated: animated, completion: nil)
     }
     
@@ -135,11 +135,11 @@ public class LKAlertController {
     - parameter animated:  Whether to animate into the view or not
     - parameter completion:  Closure to call when the button is pressed
     */
-    public func show(animated animated: Bool, completion: (() -> Void)?) {
+    public func show(animated: Bool, completion: (() -> Void)?) {
 		//If a delay time has been set, delay the presentation of the alert by the delayTime
 		if let time = delayTime {
-			let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
-			dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+			let dispatchTime = DispatchTime.now() + time
+			DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
 				self.show(animated: animated, completion: completion)
 			}
 			
@@ -149,14 +149,14 @@ public class LKAlertController {
 		
         //Override for testing
         if let alertTester = LKAlertController.alertTester {
-            alertTester(style: alertController.preferredStyle, title: title, message: message, actions: alertController.actions, fields: alertController.textFields)
+            alertTester(alertController.preferredStyle, title, message, alertController.actions, alertController.textFields)
             LKAlertController.alertTester = nil
         }
         //Present the alert
-        else if let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+        else if let viewController = UIApplication.shared.keyWindow?.rootViewController {
             //Find the presented view controller
             var presentedController = viewController
-            while presentedController.presentedViewController != nil && presentedController.presentedViewController?.isBeingDismissed() == false {
+            while presentedController.presentedViewController != nil && presentedController.presentedViewController?.isBeingDismissed == false {
                 presentedController = presentedController.presentedViewController!
             }
             
@@ -178,8 +178,8 @@ public class LKAlertController {
 				presentedController = source
 			}
 			
-			dispatch_async(dispatch_get_main_queue()) {
-				presentedController.presentViewController(self.alertController, animated: animated, completion: completion)
+			DispatchQueue.main.async {
+				presentedController.present(self.alertController, animated: animated, completion: completion)
 			}
         }
     }
@@ -190,7 +190,7 @@ public class LKAlertController {
     }
     
     ///Override the show function with a closure for using with your unit tests
-    public class func overrideShowForTesting(callback: ((style: UIAlertControllerStyle, title: String?, message: String?, actions: [AnyObject], fields: [AnyObject]?) -> Void)?) {
+    public class func overrideShowForTesting(_ callback: ((_ style: UIAlertControllerStyle, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)?) {
         alertTester = callback
     }
 }
@@ -200,7 +200,7 @@ public class LKAlertController {
 public class Alert: LKAlertController {
     ///Create a new alert without a title or message
     public init() {
-        super.init(style: .Alert)
+        super.init(style: .alert)
     }
     
     /**
@@ -209,7 +209,7 @@ public class Alert: LKAlertController {
     - parameter title:  Title of the alert
     */
     public init(title: String?) {
-        super.init(style: .Alert)
+        super.init(style: .alert)
         self.title = title
     }
     
@@ -219,7 +219,7 @@ public class Alert: LKAlertController {
     - parameter message:  Body of the alert
     */
     public init(message: String?) {
-        super.init(style: .Alert)
+        super.init(style: .alert)
         self.message = message
         self.title = message == nil ? nil : ""
     }
@@ -231,7 +231,7 @@ public class Alert: LKAlertController {
     - parameter message:  Body of the alert
     */
     public init(title: String?, message: String?) {
-        super.init(style: .Alert)
+        super.init(style: .alert)
         self.title = title
         self.message = message
     }
@@ -241,8 +241,8 @@ public class Alert: LKAlertController {
     
     - parameter title:  Title of the button
     */
-    public func addAction(title: String) -> Alert {
-        return addAction(title, style: .Cancel, preferredAction: false, handler: nil)
+    public func addAction(_ title: String) -> Alert {
+        return addAction(title, style: .cancel, preferredAction: false, handler: nil)
     }
     
     /**
@@ -252,7 +252,7 @@ public class Alert: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
-    public override func addAction(title: String, style: UIAlertActionStyle, handler: actionHandler?) -> Alert {
+    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> Alert {
         return addAction(title, style: style, preferredAction: false, handler: handler)
     }
     
@@ -264,7 +264,7 @@ public class Alert: LKAlertController {
      - parameter handler:  Closure to call when the button is pressed
      - parameter preferredAction: The preferred action for the user to take from an alert.
      */
-    public override func addAction(title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler?) -> Alert {
+    public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler?) -> Alert {
         return super.addAction(title, style: style, preferredAction: preferredAction, handler: handler) as! Alert
     }
     
@@ -273,36 +273,42 @@ public class Alert: LKAlertController {
     
     - parameter textField:  textField to add to the alert (must be a var, not let)
     */
-    public func addTextField(inout textField: UITextField) -> Alert {
-        alertController.addTextFieldWithConfigurationHandler { (tf: UITextField!) -> Void in
+    public func addTextField( _ textField: inout UITextField) -> Alert {
+		var field: UITextField?
+		
+        alertController.addTextField { [unowned textField] (tf: UITextField!) -> Void in
             tf.text = textField.text
             tf.placeholder = textField.placeholder
             tf.font = textField.font
             tf.textColor = textField.textColor
-            tf.secureTextEntry = textField.secureTextEntry
+            tf.isSecureTextEntry = textField.isSecureTextEntry
             tf.keyboardType = textField.keyboardType
             tf.autocapitalizationType = textField.autocapitalizationType
             tf.autocorrectionType = textField.autocorrectionType
             
-            textField = tf
+            field = tf
         }
+		
+		if let field = field {
+			textField = field
+		}
         
         return self
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
-	public override func presentIn(source: UIViewController) -> Alert {
+	public override func presentIn(_ source: UIViewController) -> Alert {
 		return super.presentIn(source) as! Alert
 	}
 	
 	//Delay the presentation of the controller.
-	public override func delay(time: NSTimeInterval) -> Alert {
+	public override func delay(_ time: TimeInterval) -> Alert {
 		return super.delay(time) as! Alert
 	}
     
     ///Shortcut method for adding an Okay button and showing the alert
     public func showOkay() {
-        super.addAction("Okay", style: .Cancel, handler: nil, preferredAction: false)
+        super.addAction("Okay", style: .cancel, preferredAction: false, handler: nil)
         show()
     }
 }
@@ -312,7 +318,7 @@ public class Alert: LKAlertController {
 public class ActionSheet: LKAlertController {
     ///Create a new action sheet without a title or message
     public init() {
-        super.init(style: .ActionSheet)
+        super.init(style: .actionSheet)
     }
     
     /**
@@ -321,7 +327,7 @@ public class ActionSheet: LKAlertController {
     - parameter title:  Title of the action sheet
     */
     public init(title: String?) {
-        super.init(style: .ActionSheet)
+        super.init(style: .actionSheet)
         self.title = title
     }
     
@@ -331,7 +337,7 @@ public class ActionSheet: LKAlertController {
     - parameter message:  Body of the action sheet
     */
     public init(message: String?) {
-        super.init(style: .ActionSheet)
+        super.init(style: .actionSheet)
         self.message = message
         self.title = message == nil ? nil : ""
     }
@@ -343,7 +349,7 @@ public class ActionSheet: LKAlertController {
     - parameter message:  Body of the action sheet
     */
     public init(title: String?, message: String?) {
-        super.init(style: .ActionSheet)
+        super.init(style: .actionSheet)
         self.title = title
         self.message = message
     }
@@ -353,8 +359,8 @@ public class ActionSheet: LKAlertController {
     
     - parameter title:  Title of the button
     */
-    public func addAction(title: String) -> ActionSheet {
-        return addAction(title, style: .Cancel, handler: nil)
+    public func addAction(_ title: String) -> ActionSheet {
+        return addAction(title, style: .cancel, handler: nil)
     }
     
     /**
@@ -364,17 +370,17 @@ public class ActionSheet: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
-    public override func addAction(title: String, style: UIAlertActionStyle, handler: actionHandler?) -> ActionSheet {
+    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> ActionSheet {
         return super.addAction(title, style: style, preferredAction: false, handler: handler) as! ActionSheet
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
-	public override func presentIn(source: UIViewController) -> ActionSheet {
+	public override func presentIn(_ source: UIViewController) -> ActionSheet {
 		return super.presentIn(source) as! ActionSheet
 	}
 	
 	//Delay the presentation of the controller.
-	public override func delay(time: NSTimeInterval) -> ActionSheet {
+	open override func delay(_ time: TimeInterval) -> ActionSheet {
 		return super.delay(time) as! ActionSheet
 	}
     
@@ -384,7 +390,7 @@ public class ActionSheet: LKAlertController {
     
     - parameter item:  UIBarButtonItem that the action sheet will present from
     */
-    public func setBarButtonItem(item: UIBarButtonItem) -> ActionSheet {
+    public func setBarButtonItem(_ item: UIBarButtonItem) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
             popoverController.barButtonItem = item
         }
@@ -399,7 +405,7 @@ public class ActionSheet: LKAlertController {
     
     - parameter source:  The view the action sheet will present from
     */
-    public func setPresentingSource(source: UIView) -> ActionSheet {
+    public func setPresentingSource(_ source: UIView) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
             popoverController.sourceView = source
             popoverController.sourceRect = source.bounds
