@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 ///Base class for creating an alert controller.
 ///Use Alert or ActionSheet instead
 public class LKAlertController {
