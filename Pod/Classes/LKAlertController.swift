@@ -9,10 +9,8 @@
 import UIKit
 
 
-/**
-Base class for creating an alert controller.
-Use Alert or ActionSheet instead
-*/
+///Base class for creating an alert controller.
+///Use Alert or ActionSheet instead
 public class LKAlertController {
 	///UIAlertActions callback
     public typealias actionHandler = (UIAlertAction!) -> Void
@@ -49,9 +47,9 @@ public class LKAlertController {
         }
     }
 
-    /** Used internally to determine if the user has set the popover controller source for presenting */
+    ///Used internally to determine if the user has set the popover controller source for presenting
     internal var configuredPopoverController = false
-    
+	
     /**
     Initialize a new LKAlertController
     
@@ -109,7 +107,7 @@ public class LKAlertController {
 		return self
 	}
 	
-	//Delay the presentation of the controller.
+	///Delay the presentation of the controller.
 	public func delay(_ time: TimeInterval) -> LKAlertController {
 		delayTime = time
 		return self
@@ -301,7 +299,7 @@ public class Alert: LKAlertController {
 		return super.presentIn(source) as! Alert
 	}
 	
-	//Delay the presentation of the controller.
+	///Delay the presentation of the controller.
 	public override func delay(_ time: TimeInterval) -> Alert {
 		return super.delay(time) as! Alert
 	}
