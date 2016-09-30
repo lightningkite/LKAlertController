@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+
 import LKAlertController
 
 
@@ -420,6 +421,13 @@ class AlertTests: XCTestCase {
         
         waitForExpectations(timeout: 0.5, handler: nil)
     }
+	
+	func testSetTint() {
+		let tint = UIColor.green
+		let alert = Alert(message: "Tinted alert").tint(tint).getAlertController()
+		
+		XCTAssertEqual(alert.view.tintColor, tint)
+	}
 }
 
 
@@ -533,6 +541,13 @@ class ActionSheetTests: XCTestCase {
         //https://github.com/lightningkite/LKALertController/issues/26
         ActionSheet().addAction("Test", style: .default, handler: { _ in print("Test") }).show()
     }
+	
+	func testSetTint() {
+		let tint = UIColor.green
+		let alert = ActionSheet(message: "Tinted alert").tint(tint).getAlertController()
+		
+		XCTAssertEqual(alert.view.tintColor, tint)
+	}
 }
 
 
