@@ -1,6 +1,12 @@
 ## Change Log
 
-### upcoming (2016/09/30 22:34 +00:00)
+### upcoming (2016/09/30 22:35 +00:00)
+- [#35](https://github.com/LightningKite/LKAlertController/pull/35) Merge pull request #35 from lightningkite/ControllerTint (@lightningkite)
+- [e216e88](https://github.com/lightningkite/LKAlertController/commit/e216e8854e7713a2086d72e01bbd95966ea60a72) Updating the changelog (@eriksargent)
+
+### 1.11.0 (2016/09/30 22:33 +00:00)
+- [4873b52](https://github.com/lightningkite/LKAlertController/commit/4873b5205a650cbeb9240c40a4bdd8cfbf36498d) Bumping the version number (@eriksargent)
+- [48d1272](https://github.com/lightningkite/LKAlertController/commit/48d1272cab7eae187e488521715ab4285ea0018f) Adding the ability to tint the controller (@eriksargent)
 - [#34](https://github.com/LightningKite/LKAlertController/pull/34) Merge pull request #34 from lightningkite/DocumentationCleanUp (@lightningkite)
 - [30b5c9a](https://github.com/lightningkite/LKAlertController/commit/30b5c9a0400eedd1c8d94f9fdf4a658632c4cc6a) Removing extra space (@eriksargent)
 - [fd4fbf0](https://github.com/lightningkite/LKAlertController/commit/fd4fbf0caf3e900176276a8683bf9e972afbccb8) Cleaning up documentation (@eriksargent)
