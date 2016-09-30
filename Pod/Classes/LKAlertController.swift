@@ -50,6 +50,16 @@ public class LKAlertController {
     ///Used internally to determine if the user has set the popover controller source for presenting
     internal var configuredPopoverController = false
 	
+	///Tint color for the controller
+	internal var tintColor: UIColor? {
+		didSet {
+			//Set the tint color
+			if let tint = tintColor {
+				alertController.view.tintColor = tint
+			}
+		}
+	}
+	
     /**
     Initialize a new LKAlertController
     
@@ -303,6 +313,12 @@ public class Alert: LKAlertController {
 	public override func delay(_ time: TimeInterval) -> Alert {
 		return super.delay(time) as! Alert
 	}
+	
+	///Set the tint color for the alert
+	public func tint(_ color: UIColor) -> Alert {
+		tintColor = color
+		return self
+	}
     
     ///Shortcut method for adding an Okay button and showing the alert
     public func showOkay() {
@@ -380,6 +396,12 @@ public class ActionSheet: LKAlertController {
 	//Delay the presentation of the controller.
 	open override func delay(_ time: TimeInterval) -> ActionSheet {
 		return super.delay(time) as! ActionSheet
+	}
+	
+	///Set the tint color for the action sheet
+	public func tint(_ color: UIColor) -> ActionSheet {
+		tintColor = color
+		return self
 	}
     
     /**
