@@ -1,5 +1,22 @@
 ## Change Log
 
+### upcoming (2016/09/30 22:34 +00:00)
+- [#34](https://github.com/LightningKite/LKAlertController/pull/34) Merge pull request #34 from lightningkite/DocumentationCleanUp (@lightningkite)
+- [30b5c9a](https://github.com/lightningkite/LKAlertController/commit/30b5c9a0400eedd1c8d94f9fdf4a658632c4cc6a) Removing extra space (@eriksargent)
+- [fd4fbf0](https://github.com/lightningkite/LKAlertController/commit/fd4fbf0caf3e900176276a8683bf9e972afbccb8) Cleaning up documentation (@eriksargent)
+
+### 1.10.0 (2016/09/15 16:18 +00:00)
+- [b772106](https://github.com/lightningkite/LKAlertController/commit/b7721065163c2c2ba8b5ca8f27695e1e0b76d456) Fixing swift version (@eriksargent)
+- [#33](https://github.com/LightningKite/LKAlertController/pull/33) Merge pull request #33 from lightningkite/swift3 (@lightningkite)
+- [4e48bf7](https://github.com/lightningkite/LKAlertController/commit/4e48bf7f162330edc851a03beeb498cdd80830d8) Bumping the version number (@eriksargent)
+- [9ba45d9](https://github.com/lightningkite/LKAlertController/commit/9ba45d9f26491359d06b683f6617aff7f37aa889) Adding .swift-version (@eriksargent)
+- [9de2710](https://github.com/lightningkite/LKAlertController/commit/9de27108e478bb5548fd697d261e6b41c10cabaa) Cleaning up the dispatch time with swift 3 (@eriksargent)
+- [a919149](https://github.com/lightningkite/LKAlertController/commit/a919149140d21c0942b5d4c9fba3bfc37a52dd67) Adding a test for the textfield text being set properly (@eriksargent)
+- [#32](https://github.com/LightningKite/LKAlertController/pull/32) Merge pull request #32 from skofgar/master (@skofgar)
+- [9bf15f1](https://github.com/lightningkite/LKAlertController/commit/9bf15f1e1d4315129f9a6517dec68f3c3118dffe) updated circle.yml (@skofgar)
+- [44983c9](https://github.com/lightningkite/LKAlertController/commit/44983c9f3d15ed3e1b1cd46a93237ba2619fcd39) updated to Swift 3 (@skofgar)
+- [3393ae7](https://github.com/lightningkite/LKAlertController/commit/3393ae76ea5917864e84bcda8bcbc9a2f51d8eae) Updating changes (@eriksargent)
+
 ### 1.9.1 (2016/05/10 15:08 +00:00)
 - [#31](https://github.com/LightningKite/LKAlertController/pull/31) Merge pull request #31 from lightningkite/DispatchMainThread (@lightningkite)
 - [49bc1a9](https://github.com/lightningkite/LKAlertController/commit/49bc1a9e4d13b0a30960337b96d86e4f39465e04) Making sure the presenting of the controller always happens in the main thread (@eriksargent)
@@ -50,8 +67,8 @@
 - [6779509](https://github.com/lightningkite/LKAlertController/commit/677950926d657032853bc4f9862e028351a845aa) Adding preferredAction to README (@eriksargent)
 - [7f658e4](https://github.com/lightningkite/LKAlertController/commit/7f658e48e7f0ae4875764397a7e672e9e9a5e41f) Fixing tests for preferredAction and cleaning up preferredAction code and documentation (@eriksargent)
 - [#23](https://github.com/LightningKite/LKAlertController/pull/23) Merge pull request #23 from andela-aonawale/feature/preferred-action (@andela-aonawale)
-- [d9208f2](https://github.com/lightningkite/LKAlertController/commit/d9208f28ae7d29036e663b1f4c34716536f172d1) override addAction method from super class and hardcoded the preferredAction argument to be false because its applicable to alerts only (@aonawale)
-- [c25c587](https://github.com/lightningkite/LKAlertController/commit/c25c58702ff5090ba906cb978b989b4b0299a411) add preferredAction feature to LKAlertController (@aonawale)
+- [d9208f2](https://github.com/lightningkite/LKAlertController/commit/d9208f28ae7d29036e663b1f4c34716536f172d1) override addAction method from super class and hardcoded the preferredAction argument to be false because its applicable to alerts only
+- [c25c587](https://github.com/lightningkite/LKAlertController/commit/c25c58702ff5090ba906cb978b989b4b0299a411) add preferredAction feature to LKAlertController
 - [09cc527](https://github.com/lightningkite/LKAlertController/commit/09cc527891f5ca076cf5561ec090c123e2b59032) Making circle use xcode 7 (@eriksargent)
 
 ### 1.5.0 (2015/09/17 14:48 +00:00)
