@@ -128,7 +128,6 @@ public class LKAlertController {
 	}
     
     ///Present in the view
-	@discardableResult
     public func show() {
         show(animated: true, completion: nil)
     }
@@ -138,7 +137,6 @@ public class LKAlertController {
     
     - parameter animated:  Whether to animate into the view or not
     */
-	@discardableResult
     public func show(animated: Bool) {
         show(animated: animated, completion: nil)
     }
@@ -149,7 +147,6 @@ public class LKAlertController {
     - parameter animated:  Whether to animate into the view or not
     - parameter completion:  Closure to call when the button is pressed
     */
-	@discardableResult
     public func show(animated: Bool, completion: (() -> Void)?) {
 		//If a delay time has been set, delay the presentation of the alert by the delayTime
 		if let time = delayTime {
@@ -200,13 +197,11 @@ public class LKAlertController {
     }
     
     ///Returns the instance of the UIAlertController
-	@discardableResult
     public func getAlertController() -> UIAlertController {
         return alertController
     }
     
     ///Override the show function with a closure for using with your unit tests
-	@discardableResult
     public class func overrideShowForTesting(_ callback: ((_ style: UIAlertControllerStyle, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)?) {
         alertTester = callback
     }
