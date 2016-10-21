@@ -77,6 +77,7 @@ public class LKAlertController {
      - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
      - parameter handler:  Closure to call when the button is pressed
      */
+	@discardableResult
     public func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> LKAlertController {
         addAction(title, style: style, preferredAction: false, handler: handler)
         
@@ -92,6 +93,7 @@ public class LKAlertController {
     - parameter preferredAction: Whether or not this action is the default action when return is pressed on a hardware keyboard
     - parameter handler:  Closure to call when the button is pressed
     */
+	@discardableResult
     internal func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool = false, handler: actionHandler? = nil) -> LKAlertController {
         var action: UIAlertAction
         if let handler = handler {
@@ -112,12 +114,14 @@ public class LKAlertController {
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	@discardableResult
 	public func presentIn(_ source: UIViewController) -> LKAlertController {
 		presentationSource = source
 		return self
 	}
 	
 	///Delay the presentation of the controller.
+	@discardableResult
 	public func delay(_ time: TimeInterval) -> LKAlertController {
 		delayTime = time
 		return self
@@ -249,6 +253,7 @@ public class Alert: LKAlertController {
     
     - parameter title:  Title of the button
     */
+	@discardableResult
     public func addAction(_ title: String) -> Alert {
         return addAction(title, style: .cancel, preferredAction: false, handler: nil)
     }
@@ -260,6 +265,7 @@ public class Alert: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
+	@discardableResult
     public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> Alert {
         return addAction(title, style: style, preferredAction: false, handler: handler)
     }
@@ -272,6 +278,7 @@ public class Alert: LKAlertController {
      - parameter handler:  Closure to call when the button is pressed
      - parameter preferredAction: The preferred action for the user to take from an alert.
      */
+	@discardableResult
     public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler?) -> Alert {
         return super.addAction(title, style: style, preferredAction: preferredAction, handler: handler) as! Alert
     }
@@ -281,6 +288,7 @@ public class Alert: LKAlertController {
     
     - parameter textField:  textField to add to the alert (must be a var, not let)
     */
+	@discardableResult
     public func addTextField( _ textField: inout UITextField) -> Alert {
 		var field: UITextField?
 		
@@ -305,16 +313,19 @@ public class Alert: LKAlertController {
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	@discardableResult
 	public override func presentIn(_ source: UIViewController) -> Alert {
 		return super.presentIn(source) as! Alert
 	}
 	
 	///Delay the presentation of the controller.
+	@discardableResult
 	public override func delay(_ time: TimeInterval) -> Alert {
 		return super.delay(time) as! Alert
 	}
 	
 	///Set the tint color for the alert
+	@discardableResult
 	public func tint(_ color: UIColor) -> Alert {
 		tintColor = color
 		return self
@@ -373,6 +384,7 @@ public class ActionSheet: LKAlertController {
     
     - parameter title:  Title of the button
     */
+	@discardableResult
     public func addAction(_ title: String) -> ActionSheet {
         return addAction(title, style: .cancel, handler: nil)
     }
@@ -384,21 +396,25 @@ public class ActionSheet: LKAlertController {
     - parameter style:  Style of the button (.Default, .Cancel, .Destructive)
     - parameter handler:  Closure to call when the button is pressed
     */
+	@discardableResult
     public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> ActionSheet {
         return super.addAction(title, style: style, preferredAction: false, handler: handler) as! ActionSheet
     }
 	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
+	@discardableResult
 	public override func presentIn(_ source: UIViewController) -> ActionSheet {
 		return super.presentIn(source) as! ActionSheet
 	}
 	
 	//Delay the presentation of the controller.
+	@discardableResult
 	open override func delay(_ time: TimeInterval) -> ActionSheet {
 		return super.delay(time) as! ActionSheet
 	}
 	
 	///Set the tint color for the action sheet
+	
 	public func tint(_ color: UIColor) -> ActionSheet {
 		tintColor = color
 		return self
@@ -410,6 +426,7 @@ public class ActionSheet: LKAlertController {
     
     - parameter item:  UIBarButtonItem that the action sheet will present from
     */
+	@discardableResult
     public func setBarButtonItem(_ item: UIBarButtonItem) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
             popoverController.barButtonItem = item
@@ -425,6 +442,7 @@ public class ActionSheet: LKAlertController {
     
     - parameter source:  The view the action sheet will present from
     */
+	@discardableResult
     public func setPresentingSource(_ source: UIView) -> ActionSheet {
         if let popoverController = alertController.popoverPresentationController {
             popoverController.sourceView = source
