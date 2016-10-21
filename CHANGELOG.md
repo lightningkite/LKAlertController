@@ -1,10 +1,17 @@
 ## Change Log
 
-### upcoming (2016/09/30 22:35 +00:00)
+### 1.11.1 (2016/10/21 20:40 +00:00)
+- [e9a1557](https://github.com/lightningkite/LKAlertController/commit/e9a1557a5c21737792a3981e89e4d5e63aea6da0) Bumping version (@eriksargent)
+- [#37](https://github.com/LightningKite/LKAlertController/pull/37) Merge pull request #37 from lightningkite/DiscardableResult (@lightningkite)
+- [3ca4db1](https://github.com/lightningkite/LKAlertController/commit/3ca4db159079770db8ab8c6b6daf05dc4c60d762) Whoops, added it in too many places (@eriksargent)
+- [66d3e60](https://github.com/lightningkite/LKAlertController/commit/66d3e60eb8f59bc578202d0d8c9707c8b48aa9d1) Adding @discardableResult where appropriate (@eriksargent)
+- [#36](https://github.com/LightningKite/LKAlertController/pull/36) Merge pull request #36 from JamesPerlman/patch-1 (@JamesPerlman)
+- [9c4d5a0](https://github.com/lightningkite/LKAlertController/commit/9c4d5a007cae6221144387b3b147c565c523438b) Set SWIFT_VERSION = 3.0 (@JamesPerlman)
+- [017a261](https://github.com/lightningkite/LKAlertController/commit/017a2619ba91e21a1fad2868f567389743ea7467) Updating the changelog (@eriksargent)
+
+### 1.11.0 (2016/09/30 22:35 +00:00)
 - [#35](https://github.com/LightningKite/LKAlertController/pull/35) Merge pull request #35 from lightningkite/ControllerTint (@lightningkite)
 - [e216e88](https://github.com/lightningkite/LKAlertController/commit/e216e8854e7713a2086d72e01bbd95966ea60a72) Updating the changelog (@eriksargent)
-
-### 1.11.0 (2016/09/30 22:33 +00:00)
 - [4873b52](https://github.com/lightningkite/LKAlertController/commit/4873b5205a650cbeb9240c40a4bdd8cfbf36498d) Bumping the version number (@eriksargent)
 - [48d1272](https://github.com/lightningkite/LKAlertController/commit/48d1272cab7eae187e488521715ab4285ea0018f) Adding the ability to tint the controller (@eriksargent)
 - [#34](https://github.com/LightningKite/LKAlertController/pull/34) Merge pull request #34 from lightningkite/DocumentationCleanUp (@lightningkite)
