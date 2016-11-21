@@ -9,7 +9,7 @@ test:
         CODE_SIGN_IDENTITY=
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+        -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
         -workspace Example/LKAlertController.xcworkspace
         -scheme "LKAlertController-Example"
         test | 
