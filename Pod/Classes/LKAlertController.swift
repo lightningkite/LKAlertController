@@ -220,7 +220,6 @@ public class LKAlertController {
 
 ///Alert controller
 public class Alert: LKAlertController {
-    
     ///Create a new alert without a title or message
     public init() {
         super.init(style: .alert)
@@ -266,9 +265,9 @@ public class Alert: LKAlertController {
     */
 	@discardableResult
     public func addAction(_ title: String) -> Alert {
-        return addAction(title, style: .cancel, preferredAction: false, handler: nil)
+        return addAction(title, style: .default, preferredAction: false, handler: nil)
     }
-    
+	
     /**
     Add a new button to the alert.
     
@@ -277,7 +276,7 @@ public class Alert: LKAlertController {
     - parameter handler:  Closure to call when the button is pressed
     */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> Alert {
+    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> Alert {
         return addAction(title, style: style, preferredAction: false, handler: handler)
     }
     
@@ -290,10 +289,7 @@ public class Alert: LKAlertController {
      - parameter preferredAction: The preferred action for the user to take from an alert.
      */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler?) -> Alert {
-        if(hasRequiredTextfield){
-            
-        }
+    public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler? = nil) -> Alert {
         return super.addAction(title, style: style, preferredAction: preferredAction, handler: handler) as! Alert
     }
     
@@ -319,7 +315,7 @@ public class Alert: LKAlertController {
             field = tf
         }
         
-        if(required){
+        if(required) {
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: field, queue: OperationQueue.main) { (notification) in
                 if let actionButton = self.alertPrimaryAction {
                     actionButton.isEnabled = (!(field?.text?.isEmpty)!) ?? false
@@ -334,14 +330,7 @@ public class Alert: LKAlertController {
         
         return self
     }
-    
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("text changing")
-        if let actionButton = self.alertPrimaryAction {
-            actionButton.isEnabled = (!(textField.text?.isEmpty)!) ?? false
-        }
-        return true
-    }
+	
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
 	@discardableResult
 	public override func presentIn(_ source: UIViewController) -> Alert {
@@ -427,7 +416,7 @@ public class ActionSheet: LKAlertController {
     - parameter handler:  Closure to call when the button is pressed
     */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler?) -> ActionSheet {
+    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> ActionSheet {
         return super.addAction(title, style: style, preferredAction: false, handler: handler) as! ActionSheet
     }
 	
@@ -444,7 +433,6 @@ public class ActionSheet: LKAlertController {
 	}
 	
 	///Set the tint color for the action sheet
-	
 	public func tint(_ color: UIColor) -> ActionSheet {
 		tintColor = color
 		return self
