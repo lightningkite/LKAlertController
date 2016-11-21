@@ -59,6 +59,12 @@ public class LKAlertController {
 			}
 		}
 	}
+    
+    /**
+     Required Textfield - Disables primary action if textfield is empty
+    */
+    internal var hasRequiredTextfield = false
+    internal var alertPrimaryAction: UIAlertAction?
 	
     /**
     Initialize a new LKAlertController
@@ -107,6 +113,10 @@ public class LKAlertController {
         if #available(iOS 9.0, *) {
             if preferredAction {
                 alertController.preferredAction = action
+                if(hasRequiredTextfield){
+                    action.isEnabled = false
+                    alertPrimaryAction = action
+                }
             }
         }
         
@@ -210,6 +220,7 @@ public class LKAlertController {
 
 ///Alert controller
 public class Alert: LKAlertController {
+    
     ///Create a new alert without a title or message
     public init() {
         super.init(style: .alert)
@@ -280,6 +291,9 @@ public class Alert: LKAlertController {
      */
 	@discardableResult
     public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler?) -> Alert {
+        if(hasRequiredTextfield){
+            
+        }
         return super.addAction(title, style: style, preferredAction: preferredAction, handler: handler) as! Alert
     }
     
@@ -289,7 +303,7 @@ public class Alert: LKAlertController {
     - parameter textField:  textField to add to the alert (must be a var, not let)
     */
 	@discardableResult
-    public func addTextField( _ textField: inout UITextField) -> Alert {
+    public func addTextField( _ textField: inout UITextField, required: Bool = false) -> Alert {
 		var field: UITextField?
 		
         alertController.addTextField { [unowned textField] (tf: UITextField!) -> Void in
@@ -304,14 +318,30 @@ public class Alert: LKAlertController {
             
             field = tf
         }
-		
+        
+        if(required){
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: field, queue: OperationQueue.main) { (notification) in
+                if let actionButton = self.alertPrimaryAction {
+                    actionButton.isEnabled = (!(field?.text?.isEmpty)!) ?? false
+                }
+            }
+            self.hasRequiredTextfield = true
+        }
+        
 		if let field = field {
 			textField = field
 		}
         
         return self
     }
-	
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("text changing")
+        if let actionButton = self.alertPrimaryAction {
+            actionButton.isEnabled = (!(textField.text?.isEmpty)!) ?? false
+        }
+        return true
+    }
 	///Set the view controller to present the alert in. By default this is the top controller in the window.
 	@discardableResult
 	public override func presentIn(_ source: UIViewController) -> Alert {
