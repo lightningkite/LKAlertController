@@ -318,7 +318,7 @@ public class Alert: LKAlertController {
         if(required) {
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: field, queue: OperationQueue.main) { (notification) in
                 if let actionButton = self.alertPrimaryAction {
-                    actionButton.isEnabled = (!(field?.text?.isEmpty)!) ?? false
+                    actionButton.isEnabled = field?.text?.isEmpty == false
                 }
             }
             self.hasRequiredTextfield = true
