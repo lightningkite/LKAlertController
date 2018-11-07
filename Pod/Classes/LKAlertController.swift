@@ -13,7 +13,7 @@ import UIKit
 ///Use Alert or ActionSheet instead
 public class LKAlertController {
 	///UIAlertActions callback
-    public typealias actionHandler = (UIAlertAction!) -> Void
+    public typealias actionHandler = (UIAlertAction?) -> Void
     
     ///Internal alert controller to present to the user
     internal var alertController: UIAlertController
@@ -25,7 +25,7 @@ public class LKAlertController {
 	internal var delayTime: TimeInterval? = nil
 	
     ///Internal static variable to store the override the show method for testing purposes
-    internal static var alertTester: ((_ style: UIAlertControllerStyle, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)? = nil
+    internal static var alertTester: ((_ style: UIAlertController.Style, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)? = nil
     
     ///Title of the alert controller
     internal var title: String? {
@@ -71,7 +71,7 @@ public class LKAlertController {
     
     - parameter style:  .ActionSheet or .Alert
     */
-    public init(style: UIAlertControllerStyle) {
+    public init(style: UIAlertController.Style) {
         alertController = UIAlertController(title: nil, message: nil, preferredStyle: style)
     }
     
@@ -84,7 +84,7 @@ public class LKAlertController {
      - parameter handler:  Closure to call when the button is pressed
      */
 	@discardableResult
-    public func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> LKAlertController {
+    public func addAction(_ title: String, style: UIAlertAction.Style, handler: actionHandler? = nil) -> LKAlertController {
         addAction(title, style: style, preferredAction: false, handler: handler)
         
         return self
@@ -100,7 +100,7 @@ public class LKAlertController {
     - parameter handler:  Closure to call when the button is pressed
     */
 	@discardableResult
-    internal func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool = false, handler: actionHandler? = nil) -> LKAlertController {
+    internal func addAction(_ title: String, style: UIAlertAction.Style, preferredAction: Bool = false, handler: actionHandler? = nil) -> LKAlertController {
         var action: UIAlertAction
         if let handler = handler {
             action = UIAlertAction(title: title, style: style, handler: handler)
@@ -187,8 +187,8 @@ public class LKAlertController {
                 let popoverController = alertController.popoverPresentationController {
                     
                     var topController = presentedController
-                    while (topController.childViewControllers.last != nil) {
-                        topController = topController.childViewControllers.last!
+                    while (topController.children.last != nil) {
+                        topController = topController.children.last!
                     }
                     
                     popoverController.sourceView = topController.view
@@ -212,7 +212,7 @@ public class LKAlertController {
     }
     
     ///Override the show function with a closure for using with your unit tests
-    public class func overrideShowForTesting(_ callback: ((_ style: UIAlertControllerStyle, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)?) {
+    public class func overrideShowForTesting(_ callback: ((_ style: UIAlertController.Style, _ title: String?, _ message: String?, _ actions: [AnyObject], _ fields: [AnyObject]?) -> Void)?) {
         alertTester = callback
     }
 }
@@ -276,7 +276,7 @@ public class Alert: LKAlertController {
     - parameter handler:  Closure to call when the button is pressed
     */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> Alert {
+    public override func addAction(_ title: String, style: UIAlertAction.Style, handler: actionHandler? = nil) -> Alert {
         return addAction(title, style: style, preferredAction: false, handler: handler)
     }
     
@@ -289,7 +289,7 @@ public class Alert: LKAlertController {
      - parameter preferredAction: The preferred action for the user to take from an alert.
      */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, preferredAction: Bool, handler: actionHandler? = nil) -> Alert {
+    public override func addAction(_ title: String, style: UIAlertAction.Style, preferredAction: Bool, handler: actionHandler? = nil) -> Alert {
         return super.addAction(title, style: style, preferredAction: preferredAction, handler: handler) as! Alert
     }
     
@@ -316,7 +316,7 @@ public class Alert: LKAlertController {
         }
         
         if(required) {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: field, queue: OperationQueue.main) { (notification) in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: field, queue: OperationQueue.main) { (notification) in
                 if let actionButton = self.alertPrimaryAction {
                     actionButton.isEnabled = field?.text?.isEmpty == false
                 }
@@ -416,7 +416,7 @@ public class ActionSheet: LKAlertController {
     - parameter handler:  Closure to call when the button is pressed
     */
 	@discardableResult
-    public override func addAction(_ title: String, style: UIAlertActionStyle, handler: actionHandler? = nil) -> ActionSheet {
+    public override func addAction(_ title: String, style: UIAlertAction.Style, handler: actionHandler? = nil) -> ActionSheet {
         return super.addAction(title, style: style, preferredAction: false, handler: handler) as! ActionSheet
     }
 	
