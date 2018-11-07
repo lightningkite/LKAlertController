@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-and-test:
     working_directory: ~/lightningkite/LKAlertController
     parallelism: 1
     shell: /bin/bash --login
@@ -20,16 +20,6 @@ jobs:
     - run:
         working_directory: ~/lightningkite/LKAlertController
         command: xcodebuild -version
-
-    - restore_cache:
-        keys:
-        # This branch if available
-        - v1-dep-{{ .Branch }}-
-        # Default branch if not
-        - v1-dep-master-
-        # Any branch if there are none on the default branch - this should be unnecessary if you have your default branch configured correctly
-        - v1-dep-
-    
     # Test
     #   This would typically be a build job when using workflows, possibly combined with build
     # This is based on your 1.0 configuration file or project settings
