@@ -21,8 +21,6 @@ jobs:
         working_directory: ~/lightningkite/LKAlertController
         command: xcodebuild -version
     # Test
-    #   This would typically be a build job when using workflows, possibly combined with build
-    # This is based on your 1.0 configuration file or project settings
     - run: set -o pipefail && xcodebuild CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' -workspace Example/LKAlertController.xcworkspace -scheme "LKAlertController-Example" test | tee $CIRCLE_ARTIFACTS/xcode_raw.log | xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
     # Teardown
     - run: find $HOME/Library/Developer/Xcode/DerivedData -name '*.xcactivitylog' -exec cp {} $CIRCLE_ARTIFACTS/xcactivitylog \; || true
