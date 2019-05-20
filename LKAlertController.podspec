@@ -9,11 +9,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "LKAlertController"
-  s.version          = "1.12.2"
+  s.version          = "1.13.2"
   s.summary          = "An easy to use UIAlertController builder for swift"
   s.homepage         = "https://github.com/lightningkite/LKAlertController"
   s.license          = 'MIT'
-  s.author           = { "Erik Sargent" => "erik@lightningkite.com" }
+  s.author           = { "Erik Sargent" => "erik@lightningkite.com", "Joseph Ivie" => "joseph@lightningkite.com" }
   s.source           = { :git => "https://github.com/lightningkite/LKAlertController.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
