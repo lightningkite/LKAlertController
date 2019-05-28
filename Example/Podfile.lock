@@ -1,14 +1,16 @@
 PODS:
-  - LKAlertController (0.1.0)
+  - LKAlertController (1.12.2)
 
 DEPENDENCIES:
-  - LKAlertController (from `../`)
+  - LKAlertController (from `..`)
 
 EXTERNAL SOURCES:
   LKAlertController:
-    :path: ../
+    :path: ".."
 
 SPEC CHECKSUMS:
-  LKAlertController: edad7bed85dcf24c6e812c5ac978b5ebb7f3a6cd
+  LKAlertController: dd8052ce2dfcb410a1ce8ba206ee733aaf17e147
 
-COCOAPODS: 0.37.2
+PODFILE CHECKSUM: fa18cd9ecea158a21fcfed3ee64c9106509753ee
+
+COCOAPODS: 1.5.3

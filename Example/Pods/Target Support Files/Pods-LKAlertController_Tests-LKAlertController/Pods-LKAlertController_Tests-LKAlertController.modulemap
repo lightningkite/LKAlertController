@@ -1,6 +1,0 @@
-framework module LKAlertController {
-  umbrella header "Pods-LKAlertController_Tests-LKAlertController-umbrella.h"
-
-  export *
-  module * { export * }
-}

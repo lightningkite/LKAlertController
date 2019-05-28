@@ -2,8 +2,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 
-target 'LKAlertController_Tests', :exclusive => true do
-  pod "LKAlertController", :path => "../"
+target 'LKAlertController_Tests' do
+  platform :ios, '8.0'
+  pod 'LKAlertController', :path => '..'
 
   
 end
