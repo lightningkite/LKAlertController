@@ -10,7 +10,7 @@ jobs:
     # The `macos` block requests that builds will run on a machine running
     # macOS with the specified version of Xcode installed
     macos:
-      xcode: '10.0.0'
+      xcode: '10.2.0'
     steps:
     
     - checkout
