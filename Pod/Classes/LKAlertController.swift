@@ -187,8 +187,8 @@ public class LKAlertController {
                 let popoverController = alertController.popoverPresentationController {
                     
                     var topController = presentedController
-                    while (topController.children.last != nil) {
-                        topController = topController.children.last!
+				while (topController.children.last != nil) {
+					topController = topController.children.last!
                     }
                     
                     popoverController.sourceView = topController.view
@@ -315,7 +315,7 @@ public class Alert: LKAlertController {
             field = tf
         }
         
-        if(required) {
+        if (required) {
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: field, queue: OperationQueue.main) { (notification) in
                 if let actionButton = self.alertPrimaryAction {
                     actionButton.isEnabled = field?.text?.isEmpty == false
